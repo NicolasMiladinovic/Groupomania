@@ -1,8 +1,29 @@
-const express = require('express');
-const app = require('./app');
+let express = require('express');
+let log = require('./routes/user');
+let bodyParser = require('body-parser');
+let app = express();
 
-app.get('/', function (req, res) {
-    res.send('Hello World!!!!!!');
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
+let router = express.Router();// test route
+
+router.get('/', function(req, res) {
+    res.json({ message: 'welcome to our upload module apis' });
+});//route to handle user registration
+
+router.post('/register',log.register);
+router.post('/login',log.login);
+
+app.use('/api', router);
+
+app.get('/', (req, res) => {
+    res.send('Hello World!');
 });
 
 app.listen(3000, function () {
@@ -10,54 +31,38 @@ app.listen(3000, function () {
 });
 
 
-/* const http = require('http');
-const app = require('./app');
 
-const normalizePort = val => {
-  const port = parseInt(val, 10);
+/* const express = require('express');
+const bodyParser = require('body-parser');
+const mysql = require('mysql');
+const app = express();
 
-  if (isNaN(port)) {
-    return val;
-  }
-  if (port >= 0) {
-    return port;
-  }
-  return false;
-};
-const port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
+const userRoutes = require('./routes/user');
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
+const connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "nicolas",
+    database: "groupomania_db"
 });
 
-const errorHandler = error => {
-  if (error.syscall !== 'listen') {
-    throw error;
-  }
-  const address = server.address();
-  const bind = typeof address === 'string' ? 'pipe ' + address : 'port: ' + port;
-  switch (error.code) {
-    case 'EACCES':
-      console.error(bind + ' requires elevated privileges.');
-      process.exit(1);
-      break;
-    case 'EADDRINUSE':
-      console.error(bind + ' is already in use.');
-      process.exit(1);
-      break;
-    default:
-      throw error;
-  }
-};
-
-const server = http.createServer(app);
-
-server.on('error', errorHandler);
-server.on('listening', () => {
-  const address = server.address();
-  const bind = typeof address === 'string' ? 'pipe ' + address : 'port ' + port;
-  console.log('Listening on ' + bind);
+app.use(bodyParser.json());app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
 });
 
-server.listen(port); */
+connection.connect(function (err) {
+    if (err) throw err;
+    console.log('Connected to Groupomania Database');
+});
+
+app.use(bodyParser.json());
+
+app.use('/api/auth', userRoutes);
+
+app.listen(3000, function () {
+    console.log('Listening on port 3000');
+});
+
+module.exports = app; */
