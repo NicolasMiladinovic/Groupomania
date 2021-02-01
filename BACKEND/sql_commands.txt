@@ -1,10 +1,9 @@
 DATABASE : groupomania_db
 
 CREATE TABLE Users (
-    -> id int unsigned NOT NULL AUTO_INCREMENT,
     -> email VARCHAR(50) NOT NULL,
     -> password VARCHAR(25) NOT NULL,
-    -> PRIMARY KEY(id)
+    -> PRIMARY KEY(email)
     -> )
     -> ENGINE=InnoDB;
 
