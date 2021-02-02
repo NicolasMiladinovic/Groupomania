@@ -23,7 +23,7 @@ exports.signup = (req, res, next) => {
             const name = req.body.name;
             const firstname = req.body.firstname;
             const email = req.body.email;
-            var sql = `INSERT INTO Users VALUES (` + db.escape(name) + `, ` + db.escape(firstname) + `,` + db.escape(email) + `, '${hash}', 0)`;
+            let sql = `INSERT INTO Users VALUES (` + db.escape(name) + `, ` + db.escape(firstname) + `,` + db.escape(email) + `, '${hash}', 0)`;
             db.query(sql, function (err, result) {
                 if (err) {
                     console.log(err);
@@ -38,10 +38,10 @@ exports.signup = (req, res, next) => {
                                 { expiresIn: '24h' }
                             )
                         });
-                    })
-                }
-            })
-        })
+                    });
+                };
+            });
+        });
 };
 
 
@@ -62,11 +62,27 @@ exports.login = (req, res, next) => {
                                 { expiresIn: '24h' }
                             )
                         });
-                    }
-                })
+                    };
+                });
         }
         else {
             return res.status(404).json({ error: 'User not found' });
-        }
-    })
+        };
+    });
+};
+
+exports.deleteUser = (req, res, next) => {
+    const token = req.headers.authorization.split(' ')[1];
+    const decodedToken = jwt.verify(token, 'groupomania_secret_token');
+    const userId = decodedToken.userId;
+    let sql = `DELETE FROM Users WHERE id=${userId}`;
+    db.query(sql, function (err, result) {
+        if (err) {
+            console.log(err);
+            return res.status(400).json("error");
+        } else {
+            console.log("User has been deleted");
+            return res.status(200).json(result);
+        };
+    });
 };
