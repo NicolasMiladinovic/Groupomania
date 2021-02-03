@@ -1,0 +1,26 @@
+DATABASE : Groupomania
+
+
+
+CREATE TABLE Posts (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    user_id INT UNSIGNED NOT NULL,
+    title VARCHAR(80) NOT NULL,
+    imgURL VARCHAR(160),
+    date DATETIME NOT NULL,
+    PRIMARY KEY(id),
+    CONSTRAINT fk_posts_user_id FOREIGN KEY (user_id) REFERENCES Users (id) ON DELETE CASCADE
+)
+ENGINE=InnoDB;
+
+CREATE TABLE Comms (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    user_id INT UNSIGNED NOT NULL,
+    post_id INT UNSIGNED NOT NULL,
+    date DATETIME NOT NULL,
+    content VARCHAR(280) NOT NULL,
+    PRIMARY KEY(id),
+    CONSTRAINT fk_comms_user_id FOREIGN KEY (user_id) REFERENCES Users (id) ON DELETE CASCADE,
+    CONSTRAINT fk_comms_post_id FOREIGN KEY (post_id) REFERENCES Posts (id) ON DELETE CASCADE
+)
+ENGINE=InnoDB;
