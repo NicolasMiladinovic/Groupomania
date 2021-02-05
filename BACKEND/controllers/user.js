@@ -8,7 +8,7 @@ exports.signup = (req, res, next) => {
             const name = req.body.name;
             const firstname = req.body.firstname;
             const email = req.body.email;
-            let sql = `INSERT INTO Users VALUES (` + db.escape(name) + `, ` + db.escape(firstname) + `,` + db.escape(email) + `, '${hash}', 0)`;
+            let sql = `INSERT INTO Users VALUES (NULL,` + db.escape(name) + `, ` + db.escape(firstname) + `,` + db.escape(email) + `, '${hash}', 0)`;
             db.query(sql, function (err, result) {
                 if (err) {
                     console.log(err);

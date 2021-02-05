@@ -24,3 +24,16 @@ CREATE TABLE Comms (
     CONSTRAINT fk_comms_post_id FOREIGN KEY (post_id) REFERENCES Posts (id) ON DELETE CASCADE
 )
 ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS Users;
+CREATE TABLE Users (
+    id int unsigned NOT NULL AUTO_INCREMENT,
+    name varchar(40) NOT NULL,
+    firstname varchar(40) NOT NULL,
+    email varchar(40) NOT NULL,
+    password varchar(255) DEFAULT NULL,
+    admin tinyint NOT NULL DEFAULT '0',
+    PRIMARY KEY (id),
+    UNIQUE KEY email (email)
+)
+ENGINE=InnoDB;
