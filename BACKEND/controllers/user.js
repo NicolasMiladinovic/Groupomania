@@ -56,7 +56,7 @@ exports.login = (req, res, next) => {
     });
 };
 
-exports.deleteUser = (req, res, next) => {
+exports.deleteuser = (req, res, next) => {
     const token = req.headers.authorization.split(' ')[1];
     const decodedToken = jwt.verify(token, 'groupomania_secret_token');
     const userId = decodedToken.userId;
