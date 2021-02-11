@@ -1,14 +1,14 @@
 const db = require('../db');
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
-/* const { title } = require('process'); */
+
 
 exports.addpost = (req, res, next) => {
     let title = req.body.title;
     const token = req.headers.authorization.split(' ')[1];
     const decodedToken = jwt.verify(token, 'groupomania_secret_token');
     const userId = decodedToken.userId;
-    var imgURL = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`;
+    let imgURL = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`;
     db.query(`INSERT INTO Posts VALUES (NULL, ?, ?, ?, NOW())`, [userId, title, imgURL], function (err, result) {
         if (err) {
             console.log(err);
@@ -19,9 +19,6 @@ exports.addpost = (req, res, next) => {
         }
     });
 };
-/* let imgUrl = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`; */
-/* let imgUrl = "url de l'image"; */
-
 
 exports.getonepost = (req, res, next) => {
     let post_id = req.params.id;
@@ -47,8 +44,8 @@ exports.getallposts = (req, res, next) => {
 };
 
 exports.deleteonepost = (req, res, next) => {
-    const token = req.headers.authorization.split(' ')[1];
-    const decodedToken = jwt.verify(token, 'groupomania_secret_token');
+/*  const token = req.headers.authorization.split(' ')[1];
+    const decodedToken = jwt.verify(token, 'groupomania_secret_token'); */
     const post_id = req.body.id;
     let sql = `DELETE FROM Posts WHERE id=${post_id}`;
     db.query(sql, function (err, result) {

@@ -19,6 +19,7 @@ app.use(bodyParser.json());
 
 app.use('/auth', userRoutes);
 app.use('/post', postRoutes);
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 /* app.get('/', (req, res) => {
     res.send('Hello World!');
