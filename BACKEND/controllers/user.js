@@ -86,3 +86,18 @@ exports.getoneuser = (req, res, next) => {
     });
 };
 
+exports.modifyuser = (req, res, next) => {
+    const name = req.body.name;
+    const firstname = req.body.firstname;
+    const token = req.headers.authorization.split(' ')[1];
+    const decodedToken = jwt.verify(token, 'groupomania_secret_token');
+    const userId = decodedToken.userId;
+    db.query(`UPDATE Users SET name = ?, firstname = ? WHERE id = ?`, [name, firstname, userId], function (err, result) {
+        if (err) {
+            console.log(err);
+            return res.status(400).json("error");
+        } else {
+            res.status(201).json({ message: "1 user modified" });
+        }
+    });
+};

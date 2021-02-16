@@ -16,6 +16,6 @@ router.delete('/:id', auth, postCtrl.deleteonepost);
 //Route for comments
 router.post('/:id', auth, commCtrl.addcomm);
 router.get('/:id')
-router.delete('/', auth, commCtrl.deletecomm);
+router.delete('/:id', auth, commCtrl.deletecomm);
 
 module.exports = router;
