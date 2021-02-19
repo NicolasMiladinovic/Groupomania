@@ -5,10 +5,11 @@ const jwt = require('jsonwebtoken');
 exports.signup = (req, res, next) => {
     bcrypt.hash(req.body.password, 10)
         .then(hash => {
+            const pseudo = req.body.pseudo;
             const name = req.body.name;
             const firstname = req.body.firstname;
             const email = req.body.email;
-            let sql = `INSERT INTO Users VALUES (NULL,` + db.escape(name) + `, ` + db.escape(firstname) + `,` + db.escape(email) + `, '${hash}', 0)`;
+            let sql = `INSERT INTO Users VALUES (NULL,` + db.escape(pseudo) + `, ` + db.escape(name) + `, ` + db.escape(firstname) + `,` + db.escape(email) + `, '${hash}', 0)`;
             db.query(sql, function (err, result) {
                 if (err) {
                     console.log(err);
@@ -87,12 +88,13 @@ exports.getoneuser = (req, res, next) => {
 };
 
 exports.modifyuser = (req, res, next) => {
+    const pseudo = req.body.pseudo;
     const name = req.body.name;
     const firstname = req.body.firstname;
     const token = req.headers.authorization.split(' ')[1];
     const decodedToken = jwt.verify(token, 'groupomania_secret_token');
     const userId = decodedToken.userId;
-    db.query(`UPDATE Users SET name = ?, firstname = ? WHERE id = ?`, [name, firstname, userId], function (err, result) {
+    db.query(`UPDATE Users SET pseudo = ?, name = ?, firstname = ? WHERE id = ?`, [pseudo, name, firstname, userId], function (err, result) {
         if (err) {
             console.log(err);
             return res.status(400).json("error");

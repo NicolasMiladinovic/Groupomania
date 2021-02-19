@@ -28,6 +28,7 @@ ENGINE=InnoDB;
 DROP TABLE IF EXISTS Users;
 CREATE TABLE Users (
     id int unsigned NOT NULL AUTO_INCREMENT,
+    pseudo varchar(25) NOT NULL UNIQUE,
     name varchar(40) NOT NULL,
     firstname varchar(40) NOT NULL,
     email varchar(40) NOT NULL,
