@@ -15,8 +15,6 @@ app.use(function (req, res, next) {
 
 app.use(bodyParser.json());
 
-/* const router = express.Router(); */
-
 app.use('/auth', userRoutes);
 app.use('/post', postRoutes);
 app.use('/images', express.static(path.join(__dirname, 'images')));

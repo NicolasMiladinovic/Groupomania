@@ -22,7 +22,7 @@ exports.addpost = (req, res, next) => {
 
 exports.getonepost = (req, res, next) => {
     let post_id = req.params.id;
-    db.query(`SELECT Users.name, Users.firstname, Posts.id, Posts.title, Posts.imgURL, Posts.date, Posts.user_id FROM Users INNER JOIN Posts ON Users.id = Posts.user_id WHERE Posts.id = ?`, [post_id], function (err, result) {
+    db.query(`SELECT Users.pseudo, Users.name, Users.firstname, Posts.id, Posts.title, Posts.imgURL, Posts.date, Posts.user_id FROM Users INNER JOIN Posts ON Users.id = Posts.user_id WHERE Posts.id = ?`, [post_id], function (err, result) {
         if (err) {
             console.log(err);
             return res.status(400).json("error");
@@ -33,12 +33,12 @@ exports.getonepost = (req, res, next) => {
 };
 
 exports.getallposts = (req, res, next) => {
-    db.query(`SELECT Users.name, Users.firstname, Posts.id, Posts.title, Posts.imgURL, Posts.date, Posts.user_id FROM Users INNER JOIN Posts ON Users.id = Posts.user_id`, function (err, result) {
+    db.query(`SELECT Users.pseudo, Posts.id, Posts.title, Posts.imgURL, Posts.date, Posts.user_id FROM Users INNER JOIN Posts ON Users.id = Posts.user_id`, function (err, result) {
         if (err) {
             console.log(err);
             return res.status(400).json("error");
         } else {
-            res.status(201).json({ message: "All posts selected" });
+            res.status(201).json(result);
         }
     });
 };

@@ -26,7 +26,8 @@ exports.getallcomms = (req, res, next) => {
             console.log(err);
             return res.status(400).json("error");
         } else {
-            res.status(201).json({ message: "All comms selected" });
+            console.log("All comms selected");
+            res.status(201).json(result);
         }
     });
 };
