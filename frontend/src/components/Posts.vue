@@ -10,7 +10,6 @@ export default {
   },
   mounted() {
     this.getAllPosts();
-    console.log("test1");
   },
   methods: {
     getAllPosts() {
@@ -30,17 +29,32 @@ export default {
       v-for="Posts in posts"
       :key="Posts.id"
     >
-      <div>
+      <div id="post_container">
+        <p>Posted by {{ Posts.pseudo }}</p>
         <h2>{{ Posts.title }}</h2>
-        <p>{{ Posts.pseudo }} {{ Posts.name }}</p>
-        <img :src="Posts.imgURL" :alt="Posts.title" />
+        <img id="img" :src="Posts.imgURL" :alt="Posts.title" />
       </div>
     </router-link>
   </div>
 </template>
 
 <style>
-img{
-  width: 400px;
+#post_container {
+  margin: 10px auto;
+  background: #fff;
+  width: 700px;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#post_container:hover {
+  border: 1px solid grey;
+}
+
+#img {
+  max-width: 700px;
+  max-height: 398px;
+  display: inline;
 }
 </style>
