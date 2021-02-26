@@ -77,12 +77,13 @@ exports.getoneuser = (req, res, next) => {
     const token = req.headers.authorization.split(' ')[1];
     const decodedToken = jwt.verify(token, 'groupomania_secret_token');
     const userId = decodedToken.userId;
-    db.query(`SELECT Users.name, Users.firstname, Posts.id, Posts.title FROM Users INNER JOIN Posts ON Users.id = Posts.User_id WHERE Users.id =  ?`, [userId], function (err, result) {
+    db.query(`SELECT Users.pseudo, Users.name, Users.firstname, Posts.id, Posts.title FROM Users INNER JOIN Posts ON Users.id = Posts.User_id WHERE Users.id =  ?`, [userId], function (err, result) {
         if (err) {
             console.log(err);
             return res.status(400).json("error");
         } else {
-            res.status(201).json({ message: "1 user selected" });
+            console.log("1 user selected");
+            res.status(201).json({ result });
         }
     });
 };

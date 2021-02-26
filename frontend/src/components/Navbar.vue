@@ -4,6 +4,7 @@
     <router-link v-if="visible" to="/signup"> | Sign Up | </router-link>
     <router-link v-if="visible" to="/login">Log In</router-link>
     <div v-if="!visible" @click="disconnection()"> | Log Out</div>
+    <router-link v-if="!visible" to="/user">| Profile</router-link>
   </div>
 </template>
 
@@ -43,6 +44,8 @@ export default {
   position: sticky;
   height: 48px;
   padding: 0 20px;
+  display: flex;
+  flex-direction: row;
 }
 
 .nav a.router-link-exact-active {

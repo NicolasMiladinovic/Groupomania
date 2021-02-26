@@ -33,7 +33,7 @@ export default {
         )
         .then((result) => {
           localStorage.setItem("user", JSON.stringify(result.data));
-          document.location.href = "./Login";
+          document.location.href = "./";
         })
         .catch((error) => {
           if (error.response.status === 400) {

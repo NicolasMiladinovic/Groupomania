@@ -27,7 +27,7 @@ export default {
         )
         .then((result) => {
           localStorage.setItem("user", JSON.stringify(result.data));
-          document.location.href = "./Login";
+          document.location.href = "./";
         })
         .catch((error) => {
           if (error.response.status === 404) {
@@ -54,7 +54,7 @@ export default {
       </div>
       <div>
         <label for="password">password</label>
-        <input type="password" v-model="password"  id="password" />
+        <input type="password" v-model="password" id="password" />
       </div>
       <button type="submit">Log In</button>
     </form>
