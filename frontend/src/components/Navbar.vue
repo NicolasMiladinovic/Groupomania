@@ -5,6 +5,7 @@
     <router-link v-if="visible" to="/login">Log In</router-link>
     <div v-if="!visible" @click="disconnection()"> | Log Out</div>
     <router-link v-if="!visible" to="/user">| Profile</router-link>
+    <router-link v-if="!visible" to="/compose">Add Post</router-link>
   </div>
 </template>
 

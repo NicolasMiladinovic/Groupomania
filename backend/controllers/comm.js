@@ -21,7 +21,7 @@ exports.addcomm = (req, res, next) => {
 
 exports.getallcomms = (req, res, next) => {
     const post_id = req.params.id;
-    db.query(`SELECT Users.name, Users.firstname, Comms.id, Comms.content, Comms.date, Comms.user_id FROM Users INNER JOIN Comms ON Users.id = Comms.post_id`, function (err, result) {
+    db.query(`SELECT Users.pseudo, Users.name, Users.firstname, Comms.id, Comms.content, Comms.date, Comms.user_id FROM Users INNER JOIN Comms ON Users.id = Comms.post_id WHERE Comms.post_id = ?`, [post_id], function (err, result) {
         if (err) {
             console.log(err);
             return res.status(400).json("error");
