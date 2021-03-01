@@ -83,7 +83,7 @@ exports.getoneuser = (req, res, next) => {
             return res.status(400).json("error");
         } else {
             console.log("1 user selected");
-            res.status(201).json({ result });
+            res.status(201).json(result);
         }
     });
 };

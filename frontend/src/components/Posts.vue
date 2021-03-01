@@ -25,7 +25,7 @@ export default {
 <template>
   <div>
     <router-link
-      :to="{ name: 'Home', params: { id: Posts.id } }"
+      :to="{ name: 'OnePost', params: { id: Posts.id } }"
       v-for="Posts in posts"
       :key="Posts.id"
     >

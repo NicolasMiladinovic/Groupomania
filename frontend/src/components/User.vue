@@ -23,6 +23,7 @@ export default {
         .then((response) => {
           this.users = response.data;
           console.log(this.users);
+          console.log();
         });
     },
   },
@@ -30,7 +31,9 @@ export default {
 </script>
 
 <template>
-  <div></div>
+  <div>
+    {{ users[0].pseudo }}
+  </div>
 </template>
 
 <style>
