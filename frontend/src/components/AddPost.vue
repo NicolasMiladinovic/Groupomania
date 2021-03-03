@@ -5,45 +5,38 @@ export default {
   name: "Publish",
   data() {
     return {
-      file: [],
+      file: "",
     };
   },
   methods: {
+    selectFile() {
+      this.file = this.$refs.file.files[0];
+      console.log(this.file);
+    },
+
     addPost() {
-      const title = document.getElementById("title").value;
-      const file = 
-      axios
-        .post(
-          `http://localhost:3000/post/`,
-          {
-            title,
-            file,
-          },
-          {
-            headers: {
-              "Content-type": "multipart/form-data",
-              Authorization: `Bearer ${this.$token}`,
-            },
-          }
-        )
-        .then((result) => {
-          if (result.status === 201) {
-            document.location.href = "./";
-          }
-        });
+      const formData = new FormData();
+      formData.append("file", this.file);
+      formData.append("title", document.getElementById("title").value);
+      axios.post(`http://localhost:3000/post/`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${this.$token}`,
+        },
+      });
     },
   },
 };
 </script>
 
 <template>
-  <div>
-    <form @submit.prevent="addPost()">
-      <input id="title" type="text" />
-      <input id="file" type="file" />
-      <button>Publish</button>
-    </form>
-  </div>
+  <form @submit.prevent="addPost()" enctype="multipart/form-data">
+    <label for="title">Write your post</label>
+    <input type="text" id="title"/>
+    <label for="file">Upload File</label>
+    <input type="file" ref="file" @change="selectFile" />
+    <button>Send</button>
+  </form>
 </template>
 
 <style>
