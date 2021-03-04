@@ -6,15 +6,16 @@ export default {
   data() {
     return {
       post: [],
+      users: [],
     };
   },
-  mounted() {
+  created() {
     this.getOnePost();
+    this.getOneUser();
   },
   methods: {
     getOnePost() {
       const post_id = this.$route.params.id;
-      console.log(post_id);
       axios
         .get(`http://localhost:3000/post/${post_id}`, {
           headers: {
@@ -27,6 +28,36 @@ export default {
           console.log(this.post);
         });
     },
+
+    getOneUser() {
+      axios
+        .get(`http://localhost:3000/auth/`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${this.$token}`,
+          },
+        })
+        .then((response) => {
+          this.users = response.data;
+          console.log(this.users);
+        });
+    },
+
+    deletePost() {
+      const post_id = this.$route.params.id;
+      axios
+        .delete(`http://localhost:3000/post/${post_id}`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${this.$token}`,
+          },
+        })
+        .then((response) => {
+          if (response.status === 200) {
+            location.href = "/";
+          }
+        });
+    },
   },
 };
 </script>
@@ -34,6 +65,9 @@ export default {
 <template>
   <div id="post_container">
     <p>Posted by {{ post[0].pseudo }}</p>
+    <div v-if="this.users[0].pseudo === post[0].pseudo" @click="deletePost()">
+      Delete
+    </div>
     <h2>{{ post[0].title }}</h2>
     <img id="img" :src="post[0].imgURL" :alt="post.title" />
   </div>

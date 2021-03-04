@@ -18,12 +18,18 @@ export default {
       const formData = new FormData();
       formData.append("file", this.file);
       formData.append("title", document.getElementById("title").value);
-      axios.post(`http://localhost:3000/post/`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${this.$token}`,
-        },
-      });
+      axios
+        .post(`http://localhost:3000/post/`, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${this.$token}`,
+          },
+        })
+        .then((res) => {
+          if (res.status === 201) {
+            location.href = "/";
+          }
+        });
     },
   },
 };
@@ -32,7 +38,7 @@ export default {
 <template>
   <form @submit.prevent="addPost()" enctype="multipart/form-data">
     <label for="title">Write your post</label>
-    <input type="text" id="title"/>
+    <input type="text" id="title" />
     <label for="file">Upload File</label>
     <input type="file" ref="file" @change="selectFile" />
     <button>Send</button>

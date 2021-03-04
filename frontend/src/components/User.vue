@@ -23,7 +23,6 @@ export default {
         .then((response) => {
           this.users = response.data;
           console.log(this.users);
-          console.log();
         });
     },
   },
