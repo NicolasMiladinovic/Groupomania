@@ -48,3 +48,57 @@ export default {
 
 <style>
 </style>
+
+
+
+
+
+
+
+exports.deleteonepost = (req, res, next) => {
+/*  const token = req.headers.authorization.split(' ')[1];
+    const decodedToken = jwt.verify(token, 'groupomania_secret_token'); */
+    const post_id = req.params.id;
+    let sql = `DELETE FROM Posts WHERE id=${post_id}`;
+    db.query(sql, function (err, result) {
+        if (err) {
+            console.log(err);
+            return res.status(400).json("error");
+        } else {
+            console.log("Post has been deleted");
+            return res.status(200).json(result);
+        };
+    });
+};
+
+
+
+exports.deleteonepost = (req, res, next) => {
+    const token = req.headers.authorization.split(' ')[1];
+    const decodedToken = jwt.verify(token, 'groupomania_secret_token');
+    const post_id = req.params.id;
+    //////const userId = decodedToken.userId;
+    db.query(`SELECT * FROM Posts WHERE Posts.id = ?`,
+        [post_id],
+        function (err, result) {
+            console.log(result);
+            if (err) {
+                console.log(err);
+                return res.status(400).json('error')
+            }
+            if (decodedToken.userId == result[0].userId) {
+                const filename = result[0].imgURL.split('/images')[1];
+                fs.unlink(`images/${filename}`, () => {
+                    db.query(`DELETE FROM Posts WHERE Posts.id = ?`,
+                        [post_id],
+                        function (err, result) {
+                            if (err) {
+                                return res.status(400).json({ err });
+                            }
+                            return res.status(200).json(result)
+                        })
+                })
+            }
+        }
+    )
+}

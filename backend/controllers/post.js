@@ -44,8 +44,6 @@ exports.getallposts = (req, res, next) => {
 };
 
 exports.deleteonepost = (req, res, next) => {
-/*  const token = req.headers.authorization.split(' ')[1];
-    const decodedToken = jwt.verify(token, 'groupomania_secret_token'); */
     const post_id = req.params.id;
     let sql = `DELETE FROM Posts WHERE id=${post_id}`;
     db.query(sql, function (err, result) {

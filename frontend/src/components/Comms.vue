@@ -6,6 +6,7 @@ export default {
   data() {
     return {
       comms: [],
+      user_connected_id: localStorage.getItem("user_id"),
     };
   },
   created() {
@@ -17,7 +18,7 @@ export default {
       const content = document.getElementById("content").value;
       axios
         .post(
-          `http://localhost:3000/post/${post_id}`,
+          `http://localhost:3000/post/${post_id}/reply`,
           {
             content,
           },
@@ -49,6 +50,27 @@ export default {
           this.comms = response.data;
         });
     },
+
+    deleteComm(id) {
+      axios
+        .post(
+          `http://localhost:3000/post/reply`,
+          {
+            id,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${this.$token}`,
+            },
+          }
+        )
+        .then((response) => {
+          if (response.status === 200) {
+            this.getAllComms();
+          }
+        });
+    },
   },
 };
 </script>
@@ -63,6 +85,12 @@ export default {
     <div id="comms" v-for="Comms in comms" :key="Comms.id">
       <div>@{{ Comms.pseudo }}</div>
       <div>{{ Comms.content }}</div>
+      <div
+        v-if="Comms.user_id == user_connected_id"
+        @click="deleteComm(Comms.id)"
+      >
+        Delete
+      </div>
     </div>
   </div>
 </template>

@@ -33,16 +33,14 @@ exports.getallcomms = (req, res, next) => {
 };
 
 exports.deletecomm = (req, res, next) => {
-    /*  const token = req.headers.authorization.split(' ')[1];
-        const decodedToken = jwt.verify(token, 'groupomania_secret_token'); */
-    const comm_id = req.params.id;
+    const comm_id = req.body.id;
     let sql = `DELETE FROM Comms WHERE id=${comm_id}`;
     db.query(sql, function (err, result) {
         if (err) {
             console.log(err);
             return res.status(400).json("error");
         } else {
-            console.log("Camm has been deleted");
+            console.log("Comm has been deleted");
             return res.status(200).json(result);
         };
     });

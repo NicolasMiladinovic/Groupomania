@@ -1,9 +1,9 @@
 <template>
   <div class="nav">
-    <router-link to="/">Home</router-link> 
+    <router-link to="/">Home</router-link>
     <router-link v-if="visible" to="/signup"> | Sign Up | </router-link>
     <router-link v-if="visible" to="/login">Log In</router-link>
-    <div v-if="!visible" @click="disconnection()"> | Log Out</div>
+    <div v-if="!visible" @click="disconnection()">| Log Out</div>
     <router-link v-if="!visible" to="/user">| Profile</router-link>
     <router-link v-if="!visible" to="/compose">Add Post</router-link>
   </div>
@@ -27,9 +27,10 @@ export default {
       }
     },
     disconnection() {
-        localStorage.removeItem('user');
-        document.location.href = "/";
-    }
+      localStorage.removeItem("user");
+      localStorage.removeItem("user_id");
+      document.location.href = "/";
+    },
   },
   created() {
     this.userConnected();

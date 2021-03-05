@@ -7,11 +7,11 @@ export default {
     return {
       post: [],
       users: [],
+      user_connected_id: localStorage.getItem('user_id'),
     };
   },
   created() {
     this.getOnePost();
-    this.getOneUser();
   },
   methods: {
     getOnePost() {
@@ -25,25 +25,12 @@ export default {
         })
         .then((response) => {
           this.post = response.data;
-          console.log(this.post);
-        });
-    },
-
-    getOneUser() {
-      axios
-        .get(`http://localhost:3000/auth/`, {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${this.$token}`,
-          },
-        })
-        .then((response) => {
-          this.users = response.data;
-          console.log(this.users);
+          console.log(response);
         });
     },
 
     deletePost() {
+      console.log('test');
       const post_id = this.$route.params.id;
       axios
         .delete(`http://localhost:3000/post/${post_id}`, {
@@ -65,7 +52,7 @@ export default {
 <template>
   <div id="post_container">
     <p>Posted by {{ post[0].pseudo }}</p>
-    <div v-if="this.users[0].pseudo === post[0].pseudo" @click="deletePost()">
+    <div v-if="post[0].user_id == user_connected_id" @click="deletePost()">
       Delete
     </div>
     <h2>{{ post[0].title }}</h2>

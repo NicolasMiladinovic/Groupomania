@@ -46,7 +46,8 @@ exports.login = (req, res, next) => {
                                 { userId: result[0].id },
                                 'groupomania_secret_token',
                                 { expiresIn: '24h' }
-                            )
+                            ),
+                            result
                         });
                     };
                 });
@@ -87,6 +88,7 @@ exports.getoneuser = (req, res, next) => {
         }
     });
 };
+
 
 exports.modifyuser = (req, res, next) => {
     const pseudo = req.body.pseudo;
