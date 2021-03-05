@@ -45,14 +45,19 @@ exports.getallposts = (req, res, next) => {
 
 exports.deleteonepost = (req, res, next) => {
     const post_id = req.params.id;
+    const filename = req.body.imgURL;
+    const goodfile = filename.split('/images/')[1]
     let sql = `DELETE FROM Posts WHERE id=${post_id}`;
-    db.query(sql, function (err, result) {
-        if (err) {
-            console.log(err);
-            return res.status(400).json("error");
-        } else {
-            console.log("Post has been deleted");
-            return res.status(200).json(result);
-        };
-    });
+    fs.unlink(`images/${goodfile}`, () => {
+        db.query(sql, function (err, result) {
+            if (err) {
+                console.log(err);
+                return res.status(400).json("error");
+            } else {
+
+                console.log("Post has been deleted");
+                return res.status(200).json(result);
+            };
+        });
+    })
 };

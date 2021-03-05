@@ -7,7 +7,7 @@ export default {
     return {
       post: [],
       users: [],
-      user_connected_id: localStorage.getItem('user_id'),
+      user_connected_id: localStorage.getItem("user_id"),
     };
   },
   created() {
@@ -29,19 +29,26 @@ export default {
         });
     },
 
-    deletePost() {
-      console.log('test');
+    deletePost(imgURL) {
       const post_id = this.$route.params.id;
       axios
-        .delete(`http://localhost:3000/post/${post_id}`, {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${this.$token}`,
+        .post(
+          `http://localhost:3000/post/${post_id}`,
+          {
+            imgURL,
           },
-        })
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${this.$token}`,
+            },
+          }
+        )
         .then((response) => {
           if (response.status === 200) {
+            console.log(response);
             location.href = "/";
+            console.log(this.post);
           }
         });
     },
@@ -51,8 +58,17 @@ export default {
 
 <template>
   <div id="post_container">
-    <p>Posted by {{ post[0].pseudo }}</p>
-    <div v-if="post[0].user_id == user_connected_id" @click="deletePost()">
+    <p>
+      Posted by
+      <router-link
+        :to="{ name: 'OtherUser', params: { id: post[0].user_id } }"
+        >{{ post[0].pseudo }}</router-link
+      >
+    </p>
+    <div
+      v-if="post[0].user_id == user_connected_id"
+      @click="deletePost(post[0].imgURL)"
+    >
       Delete
     </div>
     <h2>{{ post[0].title }}</h2>

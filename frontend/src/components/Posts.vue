@@ -30,7 +30,13 @@ export default {
       :key="Posts.id"
     >
       <div id="post_container">
-        <p>Posted by {{ Posts.pseudo }}</p>
+        <p>
+          Posted by
+          <router-link
+            :to="{ name: 'OtherUser', params: { id: Posts.user_id } }"
+            >{{ Posts.pseudo }}</router-link
+          >
+        </p>
         <h2>{{ Posts.title }}</h2>
         <img id="img" :src="Posts.imgURL" :alt="Posts.title" />
       </div>
