@@ -6,6 +6,7 @@ export default {
   data() {
     return {
       users: [],
+      user_connected_id: localStorage.getItem("user_id"),
     };
   },
   created() {
@@ -25,6 +26,14 @@ export default {
           console.log(this.users);
         });
     },
+    deleteUser() {
+      axios.get(`http://localhost:3000/auth/delete`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.$token}`,
+        },
+      });
+    },
   },
 };
 </script>
@@ -34,6 +43,7 @@ export default {
     <div id="user_bio">
       {{ users[0].pseudo }} {{ users[0].name }} {{ users[0].firstname }}
     </div>
+    <div @click="deleteUser()">Delete account</div>
 
     <div>
       <div v-for="Posts in users" :key="Posts.id">

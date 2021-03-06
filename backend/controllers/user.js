@@ -62,8 +62,8 @@ exports.deleteuser = (req, res, next) => {
     const token = req.headers.authorization.split(' ')[1];
     const decodedToken = jwt.verify(token, 'groupomania_secret_token');
     const userId = decodedToken.userId;
-    let sql = `DELETE FROM Users WHERE id=${userId}`;
-    db.query(sql, function (err, result) {
+    let sql = `DELETE FROM Users WHERE id= ?`;
+    db.query(sql, [userId], function (err, result) {
         if (err) {
             console.log(err);
             return res.status(400).json("error");
