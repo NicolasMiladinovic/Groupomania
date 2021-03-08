@@ -1,7 +1,6 @@
 <template>
   <div class="login">
     <Nav />
-    <h1>This is the login page</h1>
     <Login />
   </div>
 </template>

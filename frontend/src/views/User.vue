@@ -1,7 +1,6 @@
 <template>
   <div class="user">
     <Nav />
-    <h1>This is the user page</h1>
     <ProfileUser />
   </div>
 </template>

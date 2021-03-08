@@ -1,7 +1,6 @@
 <template>
   <div class="onepost">
     <Nav />
-    <h1>This is the page of an other user</h1>
     <OtherProfileUser />
   </div>
 </template>

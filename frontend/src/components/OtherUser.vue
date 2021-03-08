@@ -34,7 +34,7 @@ export default {
 <template>
   <div>
     <div id="user_bio">
-      {{ users[0].pseudo }} {{ users[0].name }} {{ users[0].firstname }}
+      @{{ users[0].pseudo }} - {{ users[0].name }} {{ users[0].firstname }}
     </div>
 
     <div>
@@ -51,4 +51,11 @@ export default {
 </template>
 
 <style>
+#user_bio {
+  font-size: 40px;
+  text-align: center;
+  margin: 20px 0px 30px 0px;
+  background-color: #fff;
+  padding: 30px;
+}
 </style>

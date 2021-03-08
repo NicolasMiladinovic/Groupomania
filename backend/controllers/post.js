@@ -33,7 +33,7 @@ exports.getonepost = (req, res, next) => {
 };
 
 exports.getallposts = (req, res, next) => {
-    db.query(`SELECT Users.pseudo, Posts.id, Posts.title, Posts.imgURL, Posts.date, Posts.user_id FROM Users INNER JOIN Posts ON Users.id = Posts.user_id`, function (err, result) {
+    db.query(`SELECT Users.pseudo, Posts.id, Posts.title, Posts.imgURL, Posts.date, Posts.user_id FROM Users INNER JOIN Posts ON Users.id = Posts.user_id ORDER BY date desc`, function (err, result) {
         if (err) {
             console.log(err);
             return res.status(400).json("error");
@@ -46,7 +46,7 @@ exports.getallposts = (req, res, next) => {
 exports.deleteonepost = (req, res, next) => {
     const post_id = req.params.id;
     const filename = req.body.imgURL;
-    const goodfile = filename.split('/images/')[1]
+    const goodfile = filename.split('/images/')[1];
     let sql = `DELETE FROM Posts WHERE id=${post_id}`;
     fs.unlink(`images/${goodfile}`, () => {
         db.query(sql, function (err, result) {

@@ -27,12 +27,24 @@ export default {
         });
     },
     deleteUser() {
-      axios.get(`http://localhost:3000/auth/delete`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${this.$token}`,
-        },
-      });
+      axios
+        .get(`http://localhost:3000/auth/delete`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${this.$token}`,
+          },
+        })
+        .then((response) => {
+          localStorage.removeItem("user");
+          localStorage.removeItem("user_id");
+          document.location.href = "/";
+          console.log(response);
+        });
+    },
+    dateLocale(date) {
+      const dateFormat = new Date(date);
+      const options = { year: "numeric", month: "numeric", day: "numeric" };
+      return dateFormat.toLocaleDateString("fr-FR", options);
     },
   },
 };
@@ -41,14 +53,15 @@ export default {
 <template>
   <div>
     <div id="user_bio">
-      {{ users[0].pseudo }} {{ users[0].name }} {{ users[0].firstname }}
+      @{{ users[0].pseudo }} - {{ users[0].name }} {{ users[0].firstname }}
+      <div id="delete" @click="deleteUser()">Delete account ⚠️</div>
     </div>
-    <div @click="deleteUser()">Delete account</div>
 
     <div>
       <div v-for="Posts in users" :key="Posts.id">
         <router-link :to="{ name: 'OnePost', params: { id: Posts.id } }">
           <div id="post_container">
+            <p id="date">{{dateLocale(Posts.date)}}</p>
             <h2>{{ Posts.title }}</h2>
             <img id="img" :src="Posts.imgURL" :alt="Posts.title" />
           </div>
@@ -59,10 +72,32 @@ export default {
 </template>
 
 <style>
+body {
+  font-family: sans-serif;
+}
+
 #user_bio {
-  width: 90%;
-  background: red;
-  margin: 10px auto;
+  font-size: 40px;
+  text-align: center;
+  margin: 20px 0px 30px 0px;
+  background-color: #fff;
+  padding: 30px;
+}
+
+#delete {
+  font-size: 25px;
+  margin-top: 10px;
+  color: grey;
+}
+
+#delete:hover {
+  color: red;
+}
+
+#date {
+  float: right;
+  margin-right: 5px;
+  color: #aeaeae
 }
 
 #post_container {
@@ -77,4 +112,17 @@ export default {
 #post_container:hover {
   border: 1px solid grey;
 }
+
+h2 {
+  margin-left: 10px;
+}
+
+#img {
+  width: 500px;
+  max-height: 398px;
+  display: inline;
+  align-items: center;
+  margin: 0 0 5px 10px;
+}
+
 </style>

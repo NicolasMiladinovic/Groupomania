@@ -33,7 +33,7 @@ export default {
       const post_id = this.$route.params.id;
       axios
         .post(
-          `http://localhost:3000/post/${post_id}`,
+          `http://localhost:3000/post/${post_id}/post`,
           {
             imgURL,
           },
@@ -52,12 +52,18 @@ export default {
           }
         });
     },
+    dateLocale(date) {
+      const dateFormat = new Date(date);
+      const options = { year: "numeric", month: "numeric", day: "numeric", hour: "numeric", minute:"numeric"};
+      return dateFormat.toLocaleDateString("fr-FR", options);
+    },
   },
 };
 </script>
 
 <template>
   <div id="post_container">
+    <p>{{dateLocale(post[0].date)}}</p>
     <p>
       Posted by
       <router-link
