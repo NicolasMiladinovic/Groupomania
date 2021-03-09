@@ -36,14 +36,78 @@ export default {
 </script>
 
 <template>
-  <form @submit.prevent="addPost()" enctype="multipart/form-data">
-    <label for="title">Write your post</label>
-    <input type="text" id="title" />
-    <label for="file">Upload File</label>
-    <input type="file" ref="file" @change="selectFile" />
-    <button>Send</button>
-  </form>
+  <div id="app-addpost">
+    <div id="addpost">
+      <form @submit.prevent="addPost()" enctype="multipart/form-data">
+        <div class="input-form-addpost">
+          <label for="title">Write your post</label>
+          <textarea
+            type="text"
+            id="title"
+            class="input-addpost-title"
+          ></textarea>
+        </div>
+        <div class="input-form-addpost">
+          <label id="label-choose" for="file">Choose your image</label>
+          <input type="file" ref="file" @change="selectFile" />
+        </div>
+        <button id="send-btn">Send</button>
+      </form>
+    </div>
+  </div>
 </template>
 
 <style>
+body {
+  font-family: sans-serif;
+}
+
+#app-addpost {
+  height: 80vh;
+  box-sizing: border-box;
+}
+
+#addpost {
+  background-color: #fff;
+  width: 600px;
+  padding: 30px;
+  margin: 100px auto;
+}
+
+#label-choose {
+  margin-bottom: 7px;
+}
+
+.input-form-addpost {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-addpost-title {
+  height: 55px;
+  margin: 5px 0 30px 0;
+}
+
+textarea {
+  resize: none;
+}
+
+#send-btn {
+  margin-top: 30px;
+  color: #fff;
+  background-color: #290063;
+  border-radius: 8px;
+  height: 30px;
+  width: 50px;
+}
+
+#send-btn:hover {
+  background-color: #5e09d6;
+}
+
+@media screen and (max-width: 710px) {
+  #addpost {
+    width: 80%;
+  }
+}
 </style>

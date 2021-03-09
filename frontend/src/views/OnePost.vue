@@ -1,7 +1,6 @@
 <template>
   <div class="onepost">
     <Nav />
-    <h1>This is the onepost page</h1>
     <OnePost />
     <Comms />
   </div>

@@ -83,14 +83,15 @@ export default {
       <button type="submit">Comment</button>
     </form>
     <div id="comms" v-for="Comms in comms" :key="Comms.id">
-      <div>@{{ Comms.pseudo }}</div>
-      <div>{{ Comms.content }}</div>
       <div
         v-if="Comms.user_id == user_connected_id"
         @click="deleteComm(Comms.id)"
+        id="delete-comm"
       >
-        Delete
+        X
       </div>
+      <div id="pseudo">@{{ Comms.pseudo }}</div>
+      <div id="comm-content">{{ Comms.content }}</div>
     </div>
   </div>
 </template>
@@ -112,5 +113,22 @@ export default {
 #img {
   max-width: 700px;
   max-height: 398px;
+}
+
+#comm-content {
+  margin: 2px 5px;
+}
+
+#delete-comm {
+  float: right;
+}
+#delete-comm {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 715px) {
+  #comms_container {
+    width: 90%;
+  }
 }
 </style>

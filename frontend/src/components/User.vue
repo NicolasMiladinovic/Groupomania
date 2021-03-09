@@ -125,4 +125,12 @@ h2 {
   margin: 0 0 5px 10px;
 }
 
+@media screen and (max-width: 715px) {
+ #post_container {
+   width: 90%;
+ }
+ #img {
+   width: 90%;
+ }
+}
 </style>

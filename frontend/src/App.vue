@@ -11,13 +11,14 @@
 <style>
 body {
   margin: 0px;
+  background-color: #dae0e6;
 }
 
 a {
   text-decoration: none;
 }
 
-#app {
-  background-color: #dae0e6;
+html {
+  
 }
 </style>

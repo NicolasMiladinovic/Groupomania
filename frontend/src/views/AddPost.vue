@@ -1,7 +1,6 @@
 <template>
   <div>
     <Nav />
-    <h1>This the add post page</h1>
     <AddPost />
   </div>
 </template>

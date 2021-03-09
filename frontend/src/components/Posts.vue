@@ -77,7 +77,8 @@ h2 {
   max-height: 398px;
   display: inline;
   align-items: center;
-  margin: 0 0 5px 10px;
+  margin: 0 10% 5px 10%;
+  border-radius: 5px;
 }
 
 #date {
@@ -98,6 +99,7 @@ h2 {
  }
  #img {
    width: 90%;
+   margin: 0 0 5px 10px;
  }
 }
 </style>
