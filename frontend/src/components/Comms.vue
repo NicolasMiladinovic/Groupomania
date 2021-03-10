@@ -97,38 +97,5 @@ export default {
 </template>
 
 <style>
-#comms_container {
-  margin: 10px auto;
-  background: #fff;
-  width: 700px;
-  height: auto;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
 
-#comms {
-  border: 1px solid grey;
-}
-
-#img {
-  max-width: 700px;
-  max-height: 398px;
-}
-
-#comm-content {
-  margin: 2px 5px;
-}
-
-#delete-comm {
-  float: right;
-}
-#delete-comm {
-  cursor: pointer;
-}
-
-@media screen and (max-width: 715px) {
-  #comms_container {
-    width: 90%;
-  }
-}
 </style>

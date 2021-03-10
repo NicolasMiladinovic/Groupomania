@@ -75,38 +75,5 @@ export default {
 </template>
 
 <style>
-#sign {
-  margin: 100px 10%;
-  padding-bottom: 200px;
-}
 
-#sign-form {
-  width: 500px;
-  color: #290063;
-}
-
-.input-form {
-  display: flex;
-  flex-direction: column;
-  margin: 30px 0px;
-}
-
-#sign-btn {
-  background-color: #fdd7d7;
-  font-size: 16px;
-  border-radius: 8px;
-}
-
-#sign-btn:hover {
-  background-color: white;
-}
-
-@media screen and (max-width: 630px) {
-  #sign-form {
-    width: 85%;
-  }
-  #sign {
-    margin: 60px 5%;
-  }
-}
 </style>

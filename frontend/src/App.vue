@@ -1,24 +1,16 @@
 <template>
-  <div id="app">
-    <router-view />
-  </div>
+  <v-app class="grey lighten-1">
+    <v-main>
+      <router-view />
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-
+export default {
+  name: "App",
+  data: () => ({
+    //
+  }),
+};
 </script>
-
-<style>
-body {
-  margin: 0px;
-  background-color: #dae0e6;
-}
-
-a {
-  text-decoration: none;
-}
-
-html {
-  
-}
-</style>

@@ -58,56 +58,5 @@ export default {
 </template>
 
 <style>
-body {
-  font-family: sans-serif;
-}
 
-#app-addpost {
-  height: 80vh;
-  box-sizing: border-box;
-}
-
-#addpost {
-  background-color: #fff;
-  width: 600px;
-  padding: 30px;
-  margin: 100px auto;
-}
-
-#label-choose {
-  margin-bottom: 7px;
-}
-
-.input-form-addpost {
-  display: flex;
-  flex-direction: column;
-}
-
-.input-addpost-title {
-  height: 55px;
-  margin: 5px 0 30px 0;
-}
-
-textarea {
-  resize: none;
-}
-
-#send-btn {
-  margin-top: 30px;
-  color: #fff;
-  background-color: #290063;
-  border-radius: 8px;
-  height: 30px;
-  width: 50px;
-}
-
-#send-btn:hover {
-  background-color: #5e09d6;
-}
-
-@media screen and (max-width: 710px) {
-  #addpost {
-    width: 80%;
-  }
-}
 </style>

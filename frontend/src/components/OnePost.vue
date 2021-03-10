@@ -90,53 +90,5 @@ export default {
 </template>
 
 <style>
-body {
-  font-family: sans-serif;
-}
 
-h2 {
-  margin-left: 10px;
-}
-
-#addpost_container {
-  margin: 10px auto;
-  background: #fff;
-  width: 700px;
-  height: auto;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-#date {
-  float: right;
-  margin-right: 5px;
-  color: #aeaeae;
-}
-
-#pseudo {
-  margin-left: 5px;
-  font-style: italic;
-  color: #aeaeae;
-}
-
-#delete-post {
-  position: absolute;
-  margin-left: 680px;
-  cursor: pointer;
-}
-
-@media screen and (max-width: 715px) {
-  #addpost_container {
-    width: 90%;
-  }
-  #img {
-    width: 90%;
-  }
-  #delete-post {
-    position: initial;
-    margin: 0;
-    margin-right: 5px;
-    float: right;
-  }
-}
 </style>

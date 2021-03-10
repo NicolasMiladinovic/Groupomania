@@ -51,11 +51,5 @@ export default {
 </template>
 
 <style>
-#user_bio {
-  font-size: 40px;
-  text-align: center;
-  margin: 20px 0px 30px 0px;
-  background-color: #fff;
-  padding: 30px;
-}
+
 </style>
