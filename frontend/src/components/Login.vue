@@ -70,7 +70,7 @@ export default {
       </form>
       <div class="error-message">{{ message }}</div>
     </div>
-    <div id="deco"><img id="img-deco" src="/Logo_Groupomania/icon-above-font.png" alt=""></div>
+    <div id="deco"><img id="img-deco" src="/Logo_Groupomania/icon-left-font-monochrome-black.png" alt=""></div>
   </div>
 </template>
 

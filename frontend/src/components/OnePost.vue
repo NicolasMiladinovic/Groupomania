@@ -68,27 +68,36 @@ export default {
 </script>
 
 <template>
-  <div id="addpost_container">
-    <p id="date">{{ dateLocale(post[0].date) }}</p>
-    <p id="pseudo">
-      Posted by
-      <router-link
-        :to="{ name: 'OtherUser', params: { id: post[0].user_id } }"
-        >{{ post[0].pseudo }}</router-link
+  <v-col
+    cols="12"
+    class="d-flex justify-center mb-6"
+    :color="$vuetify.theme.dark ? 'grey darken-3' : 'grey lighten-4'"
+    flat
+    tile
+  >
+    <v-card>
+      <v-card-title class="grey lighten-4"> {{ post[0].title }} </v-card-title>
+      <div
+        v-if="post[0].user_id == user_connected_id"
+        @click="deletePost(post[0].imgURL)"
+        id="delete-post"
       >
-    </p>
-    <div
-      v-if="post[0].user_id == user_connected_id"
-      @click="deletePost(post[0].imgURL)"
-      id="delete-post"
-    >
-      X
-    </div>
-    <h2>{{ post[0].title }}</h2>
-    <img id="img" :src="post[0].imgURL" :alt="post.title" />
-  </div>
+        X
+      </div>
+      <v-card-text class="grey lighten-4">
+        {{ post[0].pseudo }}, {{ dateLocale(post[0].date) }}
+      </v-card-text>
+      <v-img
+        :src="post[0].imgURL"
+        :alt="post[0].title"
+        height="425px"
+        width="700px"
+        contain
+        class="grey lighten-5"
+      ></v-img>
+    </v-card>
+  </v-col>
 </template>
 
 <style>
-
 </style>

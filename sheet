@@ -212,3 +212,97 @@ export default {
       >Add Post</router-link
     >
   </v-toolbar>
+
+
+//////// Posts
+  <div id="post_container">
+        <p id="date">{{ dateLocale(Posts.date) }}</p>
+        <p id="pseudo">
+          Posted by
+          <router-link
+            :to="{ name: 'OtherUser', params: { id: Posts.user_id } }"
+            >{{ Posts.pseudo }}</router-link
+          >
+        </p>
+        <h2>{{ Posts.title }}</h2>
+        <img id="img" :src="Posts.imgURL" :alt="Posts.title" />
+      </div>
+
+
+      ////////// Sign Up
+      <div id="sign">
+    <form id="sign-form" action="#" @submit.prevent="signup">
+      <div class="input-form">
+        <label for="name">Name</label>
+        <input id="name" type="text" minlength="2" required />
+      </div>
+      <div class="input-form">
+        <label for="firstname">Firstname</label>
+        <input id="firstname" type="text" minlength="2" required />
+      </div>
+      <div class="input-form">
+        <label for="pseudo">Pseudo</label>
+        <input id="pseudo" type="text" minlength="5" required />
+      </div>
+      <div class="input-form">
+        <label for="email">Email</label>
+        <input id="email" type="email" required />
+      </div>
+      <div class="input-form">
+        <label for="password">Password</label>
+        <input id="password" type="password" minlength="6" required />
+      </div>
+      <button id="sign-btn" type="submit">Sign Up</button>
+    </form>
+    <div class="error-message">{{ message }}</div>
+  </div>
+
+
+  //////// SIGN In
+  <form id="sign-form" action="#" @submit.prevent="signup">
+      <div class="input-form">
+        <label for="name">Name</label>
+        <input id="name" type="text" minlength="2" required />
+      </div>
+      <div class="input-form">
+        <label for="firstname">Firstname</label>
+        <input id="firstname" type="text" minlength="2" required />
+      </div>
+      <div class="input-form">
+        <label for="pseudo">Pseudo</label>
+        <input id="pseudo" type="text" minlength="5" required />
+      </div>
+      <div class="input-form">
+        <label for="email">Email</label>
+        <input id="email" type="email" required />
+      </div>
+      <div class="input-form">
+        <label for="password">Password</label>
+        <input id="password" type="password" minlength="6" required />
+      </div>
+      <button id="sign-btn" type="submit">Sign Up</button>
+    </form>
+    <div class="error-message">{{ message }}</div>
+
+
+    ///// COMMS
+
+
+    <div>
+    <div>{{ comms.length }} Reply<span v-if="comms.length > 1">s</span></div>
+    <form @submit.prevent="addComm()" id="replys-form">
+      <input id="content" />
+      <button type="submit">Comment</button>
+    </form>
+    <div id="comms" v-for="Comms in comms" :key="Comms.id">
+      <div
+        v-if="Comms.user_id == user_connected_id"
+        @click="deleteComm(Comms.id)"
+        id="delete-comm"
+      >
+        X
+      </div>
+      <div id="pseudo">@{{ Comms.pseudo }}</div>
+      <div id="comm-content">{{ Comms.content }}</div>
+    </div>
+  </div>

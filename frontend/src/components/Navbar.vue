@@ -2,7 +2,7 @@
   <v-app-bar app>
     <router-link to="/">
       <v-toolbar-title class="text-uppercase grey--text">
-        <span>Groupomania</span>
+        <span>Groupo<span class="font-weight-medium">mania</span> </span>
       </v-toolbar-title>
     </router-link>
     <v-spacer></v-spacer>
@@ -39,6 +39,7 @@ export default {
   data: () => {
     return {
       visible: true,
+      drawer: false
     };
   },
   methods: {

@@ -46,34 +46,19 @@ export default {
 </script>
 
 <template>
-  <div id="sign">
-    <form id="sign-form" action="#" @submit.prevent="signup">
-      <div class="input-form">
-        <label for="name">Name</label>
-        <input id="name" type="text" minlength="2" required />
-      </div>
-      <div class="input-form">
-        <label for="firstname">Firstname</label>
-        <input id="firstname" type="text" minlength="2" required />
-      </div>
-      <div class="input-form">
-        <label for="pseudo">Pseudo</label>
-        <input id="pseudo" type="text" minlength="5" required />
-      </div>
-      <div class="input-form">
-        <label for="email">Email</label>
-        <input id="email" type="email" required />
-      </div>
-      <div class="input-form">
-        <label for="password">Password</label>
-        <input id="password" type="password" minlength="6" required />
-      </div>
-      <button id="sign-btn" type="submit">Sign Up</button>
-    </form>
-    <div class="error-message">{{ message }}</div>
-  </div>
+  <v-form id="form-signup" action="#" @submit.prevent="signup">
+    <v-text-field id="name" label="Name" outlined></v-text-field>
+    <v-text-field id="firstname" label="Firstname" outlined> </v-text-field>
+    <v-text-field id="pseudo" label="Pseudo" outlined> </v-text-field>
+    <v-text-field id="email" label="Email" outlined> </v-text-field>
+    <v-text-field id="password" type="password" label="Password" outlined>
+    </v-text-field>
+    <v-btn type="submit">Sign Up</v-btn>
+  </v-form>
 </template>
 
 <style>
-
+#form-signup {
+  margin: 50px;
+}
 </style>
