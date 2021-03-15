@@ -1,15 +1,24 @@
 <script>
 import axios from "axios";
+import Publish from "./AddPost";
 
 export default {
   name: "Posts",
   data() {
     return {
       posts: [],
+      visible: true,
+      revele: false,
     };
+  },
+  components: {
+    modale: Publish,
   },
   mounted() {
     this.getAllPosts();
+  },
+  created() {
+    this.userConnected();
   },
   methods: {
     getAllPosts() {
@@ -23,12 +32,31 @@ export default {
       const options = { year: "numeric", month: "numeric", day: "numeric" };
       return dateFormat.toLocaleDateString("fr-FR", options);
     },
+    userConnected() {
+      if (localStorage.user !== undefined) {
+        console.log("Nav: User is connected");
+        this.visible = false;
+      } else {
+        console.log("Nav: User is not connected");
+      }
+    },
+    toggleModale() {
+      this.revele = !this.revele;
+    },
   },
 };
 </script>
 
 <template>
   <div>
+    <v-btn
+      class="btn-addpost"
+      v-on:click="toggleModale"
+      v-if="!visible"
+      outlined
+      color="grey lighten-1"
+      >Add Post
+    </v-btn>
     <router-link
       :to="{ name: 'OnePost', params: { id: Posts.id } }"
       v-for="Posts in posts"
@@ -53,8 +81,15 @@ export default {
         </v-card>
       </v-col>
     </router-link>
+    <modale v-bind:revele="revele" v-bind:toggleModale="toggleModale"></modale>
   </div>
 </template>
 
 <style>
+.btn-addpost {
+  position: fixed;
+  top: 100px;
+  right: 30px;
+  cursor: pointer;
+}
 </style>

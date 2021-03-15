@@ -27,9 +27,6 @@
     <router-link to="/user">
       <v-btn v-if="!visible" outlined color="grey lighten-1">Profile</v-btn>
     </router-link>
-    <router-link to="/compose">
-      <v-btn v-if="!visible" outlined color="grey lighten-1">Add Post</v-btn>
-    </router-link>
   </v-app-bar>
 </template>
 
@@ -39,7 +36,7 @@ export default {
   data: () => {
     return {
       visible: true,
-      drawer: false
+      drawer: false,
     };
   },
   methods: {

@@ -226,7 +226,7 @@ export default {
         </p>
         <h2>{{ Posts.title }}</h2>
         <img id="img" :src="Posts.imgURL" :alt="Posts.title" />
-      </div>
+  </div>
 
 
       ////////// Sign Up
@@ -306,3 +306,21 @@ export default {
       <div id="comm-content">{{ Comms.content }}</div>
     </div>
   </div>
+
+
+  ///// COMMS VUETIFY 
+
+  <v-col
+      cols="12"
+      class="d-flex justify-center mb-6"
+      :color="$vuetify.theme.dark ? 'grey darken-3' : 'grey lighten-4'"
+      flat
+      tile
+    >
+      <v-card>
+        <v-card-title class="grey lighten-4">
+          {{ comms.length }} Reply<span v-if="comms.length > 1">s</span>
+        </v-card-title>
+        <v-card-text class="grey lighten-4"> test </v-card-text>
+      </v-card>
+    </v-col>
