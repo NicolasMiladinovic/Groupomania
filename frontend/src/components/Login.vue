@@ -54,26 +54,24 @@ export default {
 </script>
 
 <template>
-  <div id="log">
-    <div id="log-form">
-      <h1>Welcome Back</h1>
-      <form action="#" @submit.prevent="login">
-        <div class="input-form">
-          <label for="email">email</label>
-          <input type="email" v-model="email" id="email" />
-        </div>
-        <div class="input-form">
-          <label for="password">password</label>
-          <input type="password" v-model="password" id="password" />
-        </div>
-        <button id="log-btn" type="submit">Log In</button>
-      </form>
-      <div class="error-message">{{ message }}</div>
-    </div>
-    <div id="deco"><img id="img-deco" src="/Logo_Groupomania/icon-left-font-monochrome-black.png" alt=""></div>
+  <div id="log-form">
+    <h1>Welcome Back</h1>
+    <v-form action="#" @submit.prevent="login">
+      <v-text-field id="email" label="email" outlined></v-text-field>
+      <v-text-field
+        id="password"
+        type="password"
+        label="password"
+        outlined
+      ></v-text-field>
+      <v-btn id="log-btn" type="submit">Log In</v-btn>
+    </v-form>
+    <div class="error-message">{{ message }}</div>
   </div>
 </template>
 
-<style>
-
+<style scoped>
+#log-form {
+  margin: 50px 30%;
+}
 </style>

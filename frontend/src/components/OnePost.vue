@@ -82,10 +82,22 @@ export default {
         @click="deletePost(post[0].imgURL)"
         id="delete-post"
       >
-        X
+        <svg style="width: 24px; height: 24px" viewBox="0 0 24 24">
+          <path
+            fill="currentColor"
+            d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"
+          />
+        </svg>
       </div>
+
       <v-card-text class="grey lighten-4">
-        {{ post[0].pseudo }}, {{ dateLocale(post[0].date) }}
+        <router-link
+          id="pseudo"
+          :to="{ name: 'OtherUser', params: { id: post[0].user_id } }"
+        >
+          {{ post[0].pseudo }}</router-link
+        >
+        , {{ dateLocale(post[0].date) }}
       </v-card-text>
       <v-img
         :src="post[0].imgURL"
@@ -100,4 +112,10 @@ export default {
 </template>
 
 <style>
+#delete-post {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
 </style>

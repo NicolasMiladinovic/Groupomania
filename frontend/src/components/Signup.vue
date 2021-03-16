@@ -46,19 +46,29 @@ export default {
 </script>
 
 <template>
-  <v-form id="form-signup" action="#" @submit.prevent="signup">
-    <v-text-field id="name" label="Name" outlined></v-text-field>
-    <v-text-field id="firstname" label="Firstname" outlined> </v-text-field>
-    <v-text-field id="pseudo" label="Pseudo" outlined> </v-text-field>
-    <v-text-field id="email" label="Email" outlined> </v-text-field>
-    <v-text-field id="password" type="password" label="Password" outlined>
-    </v-text-field>
-    <v-btn type="submit">Sign Up</v-btn>
-  </v-form>
+  <div id="form-signup">
+    <h1>Welcome</h1>
+    <v-form action="#" @submit.prevent="signup">
+      <div id="name-fn">
+        <v-text-field id="name" label="Name" outlined></v-text-field>
+        <v-text-field id="firstname" label="Firstname" outlined> </v-text-field>
+      </div>
+      <v-text-field id="pseudo" label="Pseudo" outlined> </v-text-field>
+      <v-text-field id="email" label="Email" outlined> </v-text-field>
+      <v-text-field id="password" type="password" label="Password" outlined>
+      </v-text-field>
+      <v-btn type="submit">Sign Up</v-btn>
+    </v-form>
+  </div>
 </template>
 
 <style>
 #form-signup {
-  margin: 50px;
+  margin: 50px 30%;
+}
+
+#name-fn {
+  display: flex;
+  flex-direction: row;
 }
 </style>

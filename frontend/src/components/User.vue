@@ -53,24 +53,60 @@ export default {
 <template>
   <div>
     <div id="user_bio">
-      @{{ users[0].pseudo }} - {{ users[0].name }} {{ users[0].firstname }}
-      <div id="delete" @click="deleteUser()">Delete account ⚠️</div>
+      <h1>
+        @{{ users[0].pseudo }} - {{ users[0].name }} {{ users[0].firstname }}
+      </h1>
+      <v-btn depressed color="error" @click="deleteUser()" id="delete">
+        Delete account ⚠️
+      </v-btn>
     </div>
 
-    <div>
-      <div v-for="Posts in users" :key="Posts.id">
-        <router-link :to="{ name: 'OnePost', params: { id: Posts.id } }">
-          <div id="post_container">
-            <p id="date">{{dateLocale(Posts.date)}}</p>
-            <h2>{{ Posts.title }}</h2>
-            <img id="img" :src="Posts.imgURL" :alt="Posts.title" />
-          </div>
-        </router-link>
-      </div>
-    </div>
+    <router-link
+      :to="{ name: 'OnePost', params: { id: Posts.id } }"
+      v-for="Posts in users"
+      :key="Posts.id"
+    >
+      <v-col cols="12" class="d-flex justify-center mb-6" flat tile>
+        <v-card>
+          <v-img
+            :src="Posts.imgURL"
+            :alt="Posts.title"
+            height="225px"
+            width="500px"
+            contain
+            class="grey lighten-5"
+          ></v-img>
+          <v-card-title class="grey lighten-4">
+            {{ Posts.title }}
+          </v-card-title>
+          <v-card-text class="grey lighten-4">
+            <router-link
+              id="pseudo"
+              :to="{ name: 'OtherUser', params: { id: Posts.user_id } }"
+            >
+              {{ Posts.pseudo }}</router-link
+            >, {{ dateLocale(Posts.date) }}
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </router-link>
   </div>
 </template>
 
-<style>
+<style scoped>
+a {
+  color: #626262;
+}
 
+#user_bio {
+  border-bottom: 1px solid black;
+  padding: 50px;
+  margin-bottom: 50px;
+}
+
+#delete {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
 </style>

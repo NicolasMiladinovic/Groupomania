@@ -27,6 +27,11 @@ export default {
           console.log(response);
         });
     },
+    dateLocale(date) {
+      const dateFormat = new Date(date);
+      const options = { year: "numeric", month: "numeric", day: "numeric" };
+      return dateFormat.toLocaleDateString("fr-FR", options);
+    },
   },
 };
 </script>
@@ -34,22 +39,49 @@ export default {
 <template>
   <div>
     <div id="user_bio">
-      @{{ users[0].pseudo }} - {{ users[0].name }} {{ users[0].firstname }}
+      <h1>
+        @{{ users[0].pseudo }} - {{ users[0].name }} {{ users[0].firstname }}
+      </h1>
     </div>
 
     <div>
-      <div v-for="Posts in users" :key="Posts.id">
-        <router-link :to="{ name: 'OnePost', params: { id: Posts.id } }">
-          <div id="post_container">
-            <h2>{{ Posts.title }}</h2>
-            <img id="img" :src="Posts.imgURL" :alt="Posts.title" />
-          </div>
-        </router-link>
-      </div>
+      <router-link
+        :to="{ name: 'OnePost', params: { id: Posts.id } }"
+        v-for="Posts in users"
+        :key="Posts.id"
+      >
+        <v-col cols="12" class="d-flex justify-center mb-6" flat tile>
+          <v-card>
+            <v-img
+              :src="Posts.imgURL"
+              :alt="Posts.title"
+              height="225px"
+              width="500px"
+              contain
+              class="grey lighten-5"
+            ></v-img>
+            <v-card-title class="grey lighten-4">
+              {{ Posts.title }}
+            </v-card-title>
+            <v-card-text class="grey lighten-4">
+              {{ Posts.pseudo }}
+              , {{ dateLocale(Posts.date) }}
+            </v-card-text>
+          </v-card>
+        </v-col>
+      </router-link>
     </div>
   </div>
 </template>
 
 <style>
+a {
+  color: #626262;
+}
 
+#user_bio {
+  border-bottom: 1px solid black;
+  padding: 50px;
+  margin-bottom: 50px;
+}
 </style>
