@@ -1,12 +1,13 @@
 const db = require('../db');
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
+require('dotenv').config();
 
 
 exports.addpost = (req, res, next) => {
     let title = req.body.title;
     const token = req.headers.authorization.split(' ')[1];
-    const decodedToken = jwt.verify(token, 'groupomania_secret_token');
+    const decodedToken = jwt.verify(token, process.env.RANDOM_TOKEN_SECRET);
     const userId = decodedToken.userId;
     let imgURL = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`;
     db.query(`INSERT INTO Posts VALUES (NULL, ?, ?, ?, NOW())`, [userId, title, imgURL], function (err, result) {

@@ -1,6 +1,7 @@
 const db = require('../db');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 exports.signup = (req, res, next) => {
     bcrypt.hash(req.body.password, 10)
@@ -20,7 +21,7 @@ exports.signup = (req, res, next) => {
                         return res.status(200).json({
                             token: jwt.sign(
                                 { userId: result[0].id },
-                                'groupomania_secret_token',
+                                process.env.RANDOM_TOKEN_SECRET,
                                 { expiresIn: '24h' }
                             )
                         });
@@ -44,7 +45,7 @@ exports.login = (req, res, next) => {
                         return res.status(200).json({
                             token: jwt.sign(
                                 { userId: result[0].id },
-                                'groupomania_secret_token',
+                                process.env.RANDOM_TOKEN_SECRET,
                                 { expiresIn: '24h' }
                             ),
                             result
@@ -60,7 +61,7 @@ exports.login = (req, res, next) => {
 
 exports.deleteuser = (req, res, next) => {
     const token = req.headers.authorization.split(' ')[1];
-    const decodedToken = jwt.verify(token, 'groupomania_secret_token');
+    const decodedToken = jwt.verify(token, process.env.RANDOM_TOKEN_SECRET);
     const userId = decodedToken.userId;
     let sql = `DELETE FROM Users WHERE id= ?`;
     db.query(sql, [userId], function (err, result) {
@@ -76,7 +77,7 @@ exports.deleteuser = (req, res, next) => {
 
 exports.getoneuser = (req, res, next) => {
     const token = req.headers.authorization.split(' ')[1];
-    const decodedToken = jwt.verify(token, 'groupomania_secret_token');
+    const decodedToken = jwt.verify(token, process.env.RANDOM_TOKEN_SECRET);
     const userId = decodedToken.userId;
     db.query(`SELECT Users.pseudo, Users.name, Users.firstname, Posts.id, Posts.title, Posts.imgURL, Posts.date FROM Users LEFT JOIN Posts ON Users.id = Posts.User_id WHERE Users.id =  ?`, [userId], function (err, result) {
         if (err) {
@@ -94,7 +95,7 @@ exports.modifyuser = (req, res, next) => {
     const name = req.body.name;
     const firstname = req.body.firstname;
     const token = req.headers.authorization.split(' ')[1];
-    const decodedToken = jwt.verify(token, 'groupomania_secret_token');
+    const decodedToken = jwt.verify(token, process.env.RANDOM_TOKEN_SECRET);
     const userId = decodedToken.userId;
     db.query(`UPDATE Users SET pseudo = ?, name = ?, firstname = ? WHERE id = ?`, [pseudo, name, firstname, userId], function (err, result) {
         if (err) {

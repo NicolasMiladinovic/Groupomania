@@ -1,10 +1,11 @@
 const db = require('../db');
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
+require('dotenv').config();
 
 exports.addcomm = (req, res, next) => {
     const token = req.headers.authorization.split(' ')[1];
-    const decodedToken = jwt.verify(token, 'groupomania_secret_token');
+    const decodedToken = jwt.verify(token, process.env.RANDOM_TOKEN_SECRET);
     const userId = decodedToken.userId;
     const post_id = req.params.id;
     const content = req.body.content;

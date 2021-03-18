@@ -39,3 +39,5 @@ CREATE TABLE Comms (
     CONSTRAINT fk_comms_post_id FOREIGN KEY (post_id) REFERENCES Posts (id) ON DELETE CASCADE
 )
 ENGINE=InnoDB;
+
+INSERT INTO Users VALUES (NULL, 'admin', 'admin', 'admin', 'admin@groupomania', '$2a$10$tAmiATVyS.MzGVa5wwC85uYu704c3naSbAivXCIRawUrshB7JfFhy', 1);
