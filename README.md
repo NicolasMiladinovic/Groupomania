@@ -1,9 +1,9 @@
 # Groupomania - Créez un réseau social d'entreprise  
-Projet 7 formation de la foramtion de développeur web d'Openclassrooms
+Projet 7 de la formation de développeur web d'Openclassrooms
 
-## Stack
+## 📎 Stack
 
-Backend :  
+**Backend :**  
 * Node.js
 * Express
 * Mysql
@@ -12,7 +12,7 @@ Backend :
 * multer
 * file-system
 
-Frontend :  
+**Frontend :**  
 * Vue.js
 * Sass
 * Axios
@@ -48,7 +48,7 @@ Mise en place des variables d'environnement
 copier coller dans le fichier .ENV ci-dessous le code et remplacer par vos informations  
 
 `
-PORT=3000
+PORT=3000  
 USER_ENV='your_user_name_mysql'  
 PASSWORD_ENV='your_password_mysql'
 RANDOM_TOKEN_SECRET='your_secret_key'
@@ -89,5 +89,5 @@ npm run serve
 
 ## 🔒 Compte admin
 
-Mail : admin@groupomania
-Mot de passe : adminadmin
+**Mail :** admin@groupomania  
+**Mot de passe :** adminadmin
