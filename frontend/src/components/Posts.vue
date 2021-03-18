@@ -24,7 +24,6 @@ export default {
     getAllPosts() {
       axios.get(`http://localhost:3000/post/`).then((response) => {
         this.posts = response.data;
-        console.log(this.posts);
       });
     },
     dateLocale(date) {
@@ -34,10 +33,7 @@ export default {
     },
     userConnected() {
       if (localStorage.user !== undefined) {
-        console.log("Nav: User is connected");
         this.visible = false;
-      } else {
-        console.log("Nav: User is not connected");
       }
     },
     toggleModale() {

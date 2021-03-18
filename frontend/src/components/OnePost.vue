@@ -25,7 +25,6 @@ export default {
         })
         .then((response) => {
           this.post = response.data;
-          console.log(response);
         });
     },
 
@@ -46,9 +45,7 @@ export default {
         )
         .then((response) => {
           if (response.status === 200) {
-            console.log(response);
             location.href = "/";
-            console.log(this.post);
           }
         });
     },

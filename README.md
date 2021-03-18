@@ -48,12 +48,19 @@ Mise en place des variables d'environnement
 copier coller dans le fichier .ENV ci-dessous le code et remplacer par vos informations  
 
 `
-PORT=3000  
-USER_ENV='your_user_name_mysql'  
-PASSWORD_ENV='your_password_mysql'
-RANDOM_TOKEN_SECRET='your_secret_key'
+PORT=3000
+`  
 `
-## 🤖 Lancement du server backend
+USER_ENV='your_user_name_mysql'
+`  
+`
+PASSWORD_ENV='your_password_mysql'
+` 
+`
+RANDOM_TOKEN_SECRET='your_secret_key'
+`   
+
+## 🤖 Lancement du serveur backend
 
 * Dans le terminal, à la racine du projet, sa placer dans le dossier backend avec la commande :  
 `
@@ -68,7 +75,7 @@ npm install
 node server.js
 `
 
-## ☀️ Lancement du server frontend
+## ☀️ Lancement du serveur frontend
 
 * Dans le terminal, à la racine du projet, sa placer dans le dossier front avec la commande : 
 `

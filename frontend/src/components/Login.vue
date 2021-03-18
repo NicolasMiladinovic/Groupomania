@@ -34,7 +34,6 @@ export default {
             "user_id",
             JSON.stringify(res.data.result[0].id)
           );
-          console.log(res);
           location.href = "/";
         })
         .catch((error) => {

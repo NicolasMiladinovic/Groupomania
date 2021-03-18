@@ -23,7 +23,6 @@ export default {
         })
         .then((response) => {
           this.users = response.data;
-          console.log(this.users);
         });
     },
     deleteUser() {
@@ -38,7 +37,6 @@ export default {
           localStorage.removeItem("user");
           localStorage.removeItem("user_id");
           document.location.href = "/";
-          console.log(response);
         });
     },
     dateLocale(date) {
