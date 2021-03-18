@@ -84,7 +84,7 @@ export default {
       v-if="!visible"
       outlined
       color="grey lighten-1"
-      >
+    >
       <span id="addpost">Add Post</span>
       <svg style="width: 24px; height: 24px" viewBox="0 0 24 24">
         <path
@@ -116,6 +116,11 @@ a {
 @media screen and (max-width: 900px) {
   #addpost {
     display: none;
+  }
+  .btn-addpost {
+    background-color: #7f7e7e;
+    top: 800px;
+    
   }
 }
 </style>
