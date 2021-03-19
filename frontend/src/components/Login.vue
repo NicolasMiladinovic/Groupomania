@@ -34,6 +34,10 @@ export default {
             "user_id",
             JSON.stringify(res.data.result[0].id)
           );
+          localStorage.setItem(
+            "admin",
+            JSON.stringify(res.data.result[0].admin)
+          );
           location.href = "/";
         })
         .catch((error) => {

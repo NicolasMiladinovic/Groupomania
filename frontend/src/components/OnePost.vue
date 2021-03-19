@@ -8,6 +8,7 @@ export default {
       post: [],
       users: [],
       user_connected_id: localStorage.getItem("user_id"),
+      admin: localStorage.getItem("admin"),
     };
   },
   created() {
@@ -25,6 +26,7 @@ export default {
         })
         .then((response) => {
           this.post = response.data;
+          console.log(response);
         });
     },
 
@@ -75,7 +77,7 @@ export default {
     <v-card>
       <v-card-title class="grey lighten-4"> {{ post[0].title }} </v-card-title>
       <div
-        v-if="post[0].user_id == user_connected_id"
+        v-if="post[0].user_id == user_connected_id || admin == 1"
         @click="deletePost(post[0].imgURL)"
         id="delete-post"
       >

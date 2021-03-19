@@ -37,6 +37,7 @@ export default {
           localStorage.removeItem("user");
           localStorage.removeItem("user_id");
           document.location.href = "/";
+          console.log(response);
         });
     },
     dateLocale(date) {

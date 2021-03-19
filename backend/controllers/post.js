@@ -23,7 +23,7 @@ exports.addpost = (req, res, next) => {
 
 exports.getonepost = (req, res, next) => {
     let post_id = req.params.id;
-    db.query(`SELECT Users.id, Users.pseudo, Users.name, Users.firstname, Posts.id, Posts.title, Posts.imgURL, Posts.date, Posts.user_id FROM Users INNER JOIN Posts ON Users.id = Posts.user_id WHERE Posts.id = ?`, [post_id], function (err, result) {
+    db.query(`SELECT Users.id, Users.pseudo, Users.name, Users.firstname, Users.admin, Posts.id, Posts.title, Posts.imgURL, Posts.date, Posts.user_id FROM Users INNER JOIN Posts ON Users.id = Posts.user_id WHERE Posts.id = ?`, [post_id], function (err, result) {
         if (err) {
             console.log(err);
             return res.status(400).json("error");

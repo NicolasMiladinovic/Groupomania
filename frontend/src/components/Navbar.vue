@@ -57,8 +57,10 @@ export default {
   methods: {
     userConnected() {
       if (localStorage.user !== undefined) {
+        console.log("Nav: User is connected");
         this.visible = false;
       } else {
+        console.log("Nav: User is not connected");
       }
     },
     disconnection() {
