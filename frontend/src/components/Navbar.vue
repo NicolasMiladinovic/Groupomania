@@ -66,6 +66,7 @@ export default {
     disconnection() {
       localStorage.removeItem("user");
       localStorage.removeItem("user_id");
+      localStorage.removeItem("admin");
       document.location.href = "/";
     },
   },
