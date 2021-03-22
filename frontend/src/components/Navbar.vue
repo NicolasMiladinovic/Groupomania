@@ -1,10 +1,11 @@
 <template>
-  <v-app-bar app>
-    <router-link to="/">
-      <v-toolbar-title class="text-uppercase grey--text">
-        <span>Groupo<span class="font-weight-medium">mania</span> </span>
-      </v-toolbar-title>
-    </router-link>
+  <v-app-bar app> 
+      <router-link to="/">
+        <v-toolbar-title class="text-uppercase grey--text">
+          <img src="/Logo_Groupomania/icon-left-font-monochrome-black.png" alt="logo" id="logo-img" />
+          <!-- <span id="groupomania">Groupo<span class="font-weight-medium">mania</span> </span> -->
+        </v-toolbar-title>
+      </router-link>
     <v-spacer></v-spacer>
     <v-btn
       v-if="!visible"
@@ -31,8 +32,7 @@
       </v-btn>
     </router-link>
     <router-link to="/user">
-      <v-btn v-if="!visible" outlined color="grey lighten-1"
-        >
+      <v-btn v-if="!visible" outlined color="grey lighten-1">
         <span id="profile"> Profile </span>
         <svg style="width: 24px; height: 24px" viewBox="0 0 24 24">
           <path
@@ -83,8 +83,16 @@ export default {
 }
 
 @media screen and (max-width: 500px) {
-  #signout, #profile {
+  #signout,
+  #profile,
+  #groupomania {
     display: none;
   }
 }
+
+#logo-img {
+  width: 150px;
+  align-items: center;
+}
+
 </style>

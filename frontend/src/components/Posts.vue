@@ -94,6 +94,10 @@ export default {
 </template>
 
 <style scoped>
+body {
+  background-color: red;
+}
+
 a {
   color: #626262;
 }
