@@ -21,7 +21,7 @@ Projet 7 de la formation de développeur web d'Openclassrooms
 
 ## 🎯 Objectif
 
-Créer un réseau social d'entreprise interne pour les employés de Groupomania. Le but de cet outil est de facilité les interactions entre collègues.  
+Créer un réseau social d'entreprise interne pour les employés de Groupomania. Le but de cet outil est de faciliter les interactions entre collègues.  
 Ceux-ci pourront se partager des photos/gif à souhait, les commenter ainsi que découvrir les profiles de leur collègue.
 
 ## 🚀 Préparation de la base de donnée
@@ -34,7 +34,7 @@ Base de donnée MySql
 
 * Lancer la commande `CREATE DATABASE Groupomania`
 
-Pour importer la base de données, veillez à écrire le chemin complet d'accès complet vers le fichier Groupomania_database.sql ou placé le directement là où vous lancez votre terminal.
+Pour importer la base de données, veillez à écrire le chemin complet d'accès complet vers le fichier Groupomania_database.sql ou placer le directement là où vous lancez votre terminal.
 
 Si vous êtes sous Linux ↴
 * mysql Groupomania < Groupomania_database.sql
@@ -44,8 +44,8 @@ Si vous êtes sous Windows ↴
 
 Mise en place des variables d'environnement  
 
-* Créer un fichier .ENV dans le dossier backend et entrez vos informations de connexion MySql, le port de votre souhaité (par défault 3000) ainsi que votre clé secrète de token  
-copier coller dans le fichier .ENV ci-dessous le code et remplacer par vos informations  
+* Créer un fichier .ENV dans le dossier backend et entrez vos informations de connexion MySql, le port de votre serveur souhaité (par défault 3000) ainsi que votre clé secrète de token.  
+Copier coller dans le fichier .ENV ci-dessous le code et remplacer par vos informations  
 
 `
 PORT=3000
@@ -62,7 +62,7 @@ RANDOM_TOKEN_SECRET='your_secret_key'
 
 ## 🤖 Lancement du serveur backend
 
-* Dans le terminal, à la racine du projet, sa placer dans le dossier backend avec la commande :  
+* Dans le terminal, à la racine du projet, se placer dans le dossier backend avec la commande :  
 `
 cd backend
 `
@@ -77,7 +77,7 @@ node server.js
 
 ## ☀️ Lancement du serveur frontend
 
-* Dans le terminal, à la racine du projet, sa placer dans le dossier front avec la commande : 
+* Dans le terminal, à la racine du projet, se placer dans le dossier frontend avec la commande : 
 `
 cd frontend
 `
