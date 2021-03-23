@@ -37,7 +37,7 @@ Base de donnée MySql
 
 * Lancer la commande `CREATE DATABASE Groupomania`
 
-Pour importer la base de données, veillez à écrire le chemin d'accès complet vers le fichier *Groupomania_database.sql* ou placer le directement là où vous lancez votre terminal.
+Pour importer la base de données, veiller à écrire le chemin d'accès complet vers le fichier *Groupomania_database.sql* ou placer le directement là où vous lancez votre terminal.
 
 Si vous êtes sous Linux ↴
 * mysql Groupomania < Groupomania_database.sql

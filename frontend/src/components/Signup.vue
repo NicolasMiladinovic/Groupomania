@@ -15,32 +15,31 @@ export default {
       const pseudo = document.getElementById("pseudo").value;
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
-        axios
-          .post(
-            `http://localhost:3000/auth/signup`,
-            {
-              name,
-              firstname,
-              pseudo,
-              email,
-              password,
+      axios
+        .post(
+          `http://localhost:3000/auth/signup`,
+          {
+            name,
+            firstname,
+            pseudo,
+            email,
+            password,
+          },
+          {
+            headers: {
+              "Content-type": "application/json",
             },
-            {
-              headers: {
-                "Content-type": "application/json",
-              },
-            }
-          )
-          .then((result) => {
-            localStorage.setItem("user", JSON.stringify(result.data));
-            document.location.href = "./";
-          })
-          .catch((error) => {
-            if (error.response.status === 400) {
-              this.message = "User exist";
-            }
-          });
-      
+          }
+        )
+        .then((result) => {
+          localStorage.setItem("user", JSON.stringify(result.data));
+          document.location.href = "./";
+        })
+        .catch((error) => {
+          if (error.response.status === 400) {
+            this.message = "User exist";
+          }
+        });
     },
   },
 };
@@ -52,6 +51,7 @@ export default {
     <v-form action="#" @submit.prevent="signup">
       <div id="name-fn">
         <v-text-field
+          class="required"
           id="name"
           label="Name"
           pattern="[A-Za-zÀ-ÖØ-öø-ÿ' ._-]+$"
@@ -88,6 +88,8 @@ export default {
 </template>
 
 <style>
+
+
 #form-signup {
   margin: 50px 30%;
 }
