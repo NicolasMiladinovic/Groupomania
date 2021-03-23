@@ -1,5 +1,3 @@
-CREATE DATABASE Groupomania;
-
 DROP TABLE IF EXISTS Users;
 CREATE TABLE Users (
     id int unsigned NOT NULL AUTO_INCREMENT,
