@@ -65,29 +65,24 @@ export default {
       v-for="Posts in users"
       :key="Posts.id"
     >
-        <v-col cols="12" class="d-flex justify-center mb-6" flat tile>
-          <v-card>
-            <v-img
-              :src="Posts.imgURL"
-              :alt="Posts.title"
-              height="225px"
-              width="500px"
-              contain
-              class="grey lighten-5"
-            ></v-img>
-            <v-card-title class="grey lighten-4">
-              {{ Posts.title }}
-            </v-card-title>
-            <v-card-text class="grey lighten-4">
-              <router-link
-                id="pseudo"
-                :to="{ name: 'OtherUser', params: { id: Posts.user_id } }"
-              >
-                {{ Posts.pseudo }}</router-link
-              >, {{ dateLocale(Posts.date) }}
-            </v-card-text>
-          </v-card>
-        </v-col>
+      <v-col v-if="Posts.id != null" cols="12" class="d-flex justify-center mb-6" flat tile>
+        <v-card>
+          <v-img
+            :src="Posts.imgURL"
+            :alt="Posts.title"
+            height="225px"
+            width="500px"
+            contain
+            class="grey lighten-5"
+          ></v-img>
+          <v-card-title class="grey lighten-4">
+            {{ Posts.title }}
+          </v-card-title>
+          <v-card-text class="grey lighten-4">
+              {{ Posts.pseudo }}, {{ dateLocale(Posts.date) }}
+          </v-card-text>
+        </v-card>
+      </v-col>
     </router-link>
   </div>
 </template>
