@@ -23,7 +23,8 @@ exports.signup = (req, res, next) => {
                                 { userId: result[0].id },
                                 process.env.RANDOM_TOKEN_SECRET,
                                 { expiresIn: '24h' }
-                            )
+                            ),
+                            result
                         });
                     });
                 };

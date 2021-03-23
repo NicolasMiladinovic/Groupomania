@@ -115,4 +115,9 @@ export default {
   display: inline-block;
   font-size: 16px;
 }
+
+#title {
+  border: solid 1px black;
+  border-radius: 5px;
+}
 </style>

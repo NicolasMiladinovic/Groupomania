@@ -33,9 +33,11 @@ Base de donnée MySql
 
 * Enregistrer le fichier *Groupomania_database.sql* qui se trouve dans le dossier *backend*
 
-* Démarrer votre client MySql
+* Démarrer votre client MySql et connecter vous
 
 * Lancer la commande `CREATE DATABASE Groupomania`
+
+* Quitter votre session avec la commande `quit`
 
 Pour importer la base de données, veiller à écrire le chemin d'accès complet vers le fichier *Groupomania_database.sql* ou placer le directement là où vous lancez votre terminal.
 

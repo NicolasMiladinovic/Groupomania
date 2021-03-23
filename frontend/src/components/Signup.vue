@@ -38,9 +38,20 @@ export default {
               },
             }
           )
-          .then((result) => {
-            localStorage.setItem("user", JSON.stringify(result.data));
-            document.location.href = "./";
+          .then((res) => {
+            localStorage.setItem(
+              "user",
+              '{"token":' + JSON.stringify(res.data.token) + "}"
+            );
+            localStorage.setItem(
+              "user_id",
+              JSON.stringify(res.data.result[0].id)
+            );
+            localStorage.setItem(
+              "admin",
+              JSON.stringify(res.data.result[0].admin)
+            );
+            location.href = "/";
           })
           .catch((error) => {
             if (error.response.status === 400) {
