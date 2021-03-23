@@ -14,7 +14,7 @@ exports.signup = (req, res, next) => {
             db.query(sql, function (err, result) {
                 if (err) {
                     console.log(err);
-                    return res.status(400).json("error");
+                    return res.status(400).json(err);
                 } else {
                     console.log("1 user inserted");
                     db.query(`SELECT * FROM Users WHERE email = '${req.body.email}'`, function (err, result) {

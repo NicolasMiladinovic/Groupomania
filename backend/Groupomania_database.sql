@@ -5,7 +5,7 @@ CREATE TABLE Users (
     name varchar(40) NOT NULL,
     firstname varchar(40) NOT NULL,
     email varchar(40) NOT NULL,
-    password varchar(255) DEFAULT NULL,
+    password varchar(40) DEFAULT NULL,
     admin tinyint NOT NULL DEFAULT '0',
     PRIMARY KEY (id),
     UNIQUE KEY email (email)

@@ -6,6 +6,15 @@ export default {
   data() {
     return {
       message: "",
+      email: undefined,
+      rules: {
+        email: (v) => !!(v || "").match(/@/) || "Please enter a valid email",
+        password: (v) =>
+          !!(v || "").match(
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/
+          ) ||
+          "Password must contain an upper case letter, a numeric character, and a special character",
+      },
     };
   },
   methods: {
@@ -92,14 +101,23 @@ export default {
       >
       </v-text-field>
       <v-text-field
+        v-model="email"
+        :rules="[rules.email]"
         id="email"
-        label="Email"
-        pattern="[A-Za-zÀ-ÖØ-öø-ÿ' ._-]+$"
+        label="Email address"
+        type="email"
         outlined
-      >
-      </v-text-field>
-      <v-text-field id="password" type="password" label="Password" outlined>
-      </v-text-field>
+      ></v-text-field>
+      <v-text-field
+        v-model="password"
+        :rules="[rules.password]"
+        id="password"
+        counter="40"
+        label="Password"
+        style="min-height: 96px"
+        type="password"
+        outlined
+      ></v-text-field>
       <v-btn type="submit">Sign Up</v-btn>
       <div>{{ message }}</div>
     </v-form>
