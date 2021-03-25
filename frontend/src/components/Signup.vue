@@ -79,6 +79,7 @@ export default {
     <v-form action="#" @submit.prevent="signup">
       <div id="name-fn">
         <v-text-field
+          autofocus="autofocus"
           class="required"
           id="name"
           label="Name"
@@ -95,6 +96,7 @@ export default {
       </div>
       <v-text-field
         id="pseudo"
+        counter="25"
         label="Pseudo"
         pattern="[A-Za-zÀ-ÖØ-öø-ÿ' ._-]+$"
         outlined

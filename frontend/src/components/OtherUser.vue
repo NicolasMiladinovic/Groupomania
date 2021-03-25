@@ -50,19 +50,19 @@ export default {
         :key="Posts.id"
       >
         <v-col cols="12" class="d-flex justify-center mb-6" flat tile>
-          <v-card>
+          <v-card id="post">
             <v-img
               :src="Posts.imgURL"
               :alt="Posts.title"
               height="225px"
               width="500px"
               contain
-              class="grey lighten-5"
+              class="deep-orange lighten-5"
             ></v-img>
-            <v-card-title class="grey lighten-4">
+            <v-card-title class="deep-orange lighten-5">
               {{ Posts.title }}
             </v-card-title>
-            <v-card-text class="grey lighten-4">
+            <v-card-text class="deep-orange lighten-5">
               {{ Posts.pseudo }}
               , {{ dateLocale(Posts.date) }}
             </v-card-text>
@@ -70,12 +70,21 @@ export default {
         </v-col>
       </router-link>
     </div>
+    <div id="space"></div>
   </div>
 </template>
 
 <style>
 a {
   color: #626262;
+}
+
+#post {
+  margin-bottom: -42px;
+}
+
+#space {
+  height: 70px;
 }
 
 #user_bio {

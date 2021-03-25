@@ -77,4 +77,8 @@ export default {
 #log-form {
   margin: 50px 30%;
 }
+
+.error-message {
+  color: red;
+}
 </style>

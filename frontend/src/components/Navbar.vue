@@ -1,17 +1,22 @@
 <template>
-  <v-app-bar app> 
-      <router-link to="/">
-        <v-toolbar-title class="text-uppercase grey--text">
-          <img src="/Logo_Groupomania/icon-left-font-monochrome-black.png" alt="logo" id="logo-img" />
-          <!-- <span id="groupomania">Groupo<span class="font-weight-medium">mania</span> </span> -->
-        </v-toolbar-title>
-      </router-link>
+  <v-app-bar class="red darken-1" app>
+    <router-link to="/">
+      <v-toolbar-title class="text-uppercase grey--text">
+        <img
+          src="/Logo_Groupomania/icon-left-font-monochrome-white.png"
+          alt="logo"
+          id="logo-img"
+        />
+        <!-- <span id="groupomania">Groupo<span class="font-weight-medium">mania</span> </span> -->
+      </v-toolbar-title>
+    </router-link>
     <v-spacer></v-spacer>
     <v-btn
       v-if="!visible"
       @click="disconnection()"
       outlined
-      color="grey lighten-1"
+      color="white"
+     
     >
       <span id="signout">Sign Out</span
       ><svg style="width: 24px; height: 24px" viewBox="0 0 24 24">
@@ -22,17 +27,17 @@
       </svg>
     </v-btn>
     <router-link to="/signup">
-      <v-btn v-if="visible" outlined color="grey lighten-1">
+      <v-btn v-if="visible" outlined color="white">
         <span> Sign Up </span>
       </v-btn>
     </router-link>
     <router-link to="/login">
-      <v-btn v-if="visible" outlined color="grey lighten-1">
+      <v-btn v-if="visible" outlined color="white">
         <span> Log In </span>
       </v-btn>
     </router-link>
     <router-link to="/user">
-      <v-btn v-if="!visible" outlined color="grey lighten-1">
+      <v-btn v-if="!visible" outlined color="white">
         <span id="profile"> Profile </span>
         <svg style="width: 24px; height: 24px" viewBox="0 0 24 24">
           <path
@@ -94,5 +99,4 @@ export default {
   width: 150px;
   align-items: center;
 }
-
 </style>

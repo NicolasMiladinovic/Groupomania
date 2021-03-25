@@ -5,6 +5,7 @@ export default {
   name: "Comms",
   data() {
     return {
+      message: "",
       comms: [],
       user_connected_id: localStorage.getItem("user_id"),
       admin: localStorage.getItem("admin"),
@@ -34,6 +35,11 @@ export default {
           if (res.status === 201) {
             this.getAllComms();
             document.getElementById("replys-form").reset();
+          }
+        })
+        .catch((error) => {
+          if (error.response.status === 401) {
+            this.message = "You have to be connected";
           }
         });
     },
@@ -82,6 +88,7 @@ export default {
     <form @submit.prevent="addComm()" id="replys-form">
       <input id="content" />
       <button type="submit">Comment</button>
+      <span id="err-comm">{{ message }}</span>
     </form>
     <div id="comms-box" v-for="Comms in comms" :key="Comms.id">
       <div id="pseudo-delete">
@@ -101,6 +108,7 @@ export default {
       </div>
       <div id="comm-content">{{ Comms.content }}</div>
     </div>
+    <div id="space"></div>
   </div>
 </template>
 
@@ -108,7 +116,7 @@ export default {
 #comms {
   width: 95%;
   max-width: 700px;
-  background-color: #f5f5f5;
+  background-color: #ffd7d7;
   margin: -30px auto 0 auto;
   padding: 10px;
   border-radius: 5px;
@@ -143,5 +151,13 @@ export default {
 
 #comms-delete:hover {
   color: red;
+}
+
+#err-comm {
+  color: red;
+}
+
+#space {
+  height: 70px;
 }
 </style>

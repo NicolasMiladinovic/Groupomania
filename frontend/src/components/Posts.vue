@@ -51,19 +51,19 @@ export default {
       :key="Posts.id"
     >
       <v-col cols="12" class="d-flex justify-center mb-6" flat tile>
-        <v-card>
+        <v-card id="post">
           <v-img
             :src="Posts.imgURL"
             :alt="Posts.title"
             height="225px"
             width="500px"
             contain
-            class="grey lighten-5"
+            class="deep-orange lighten-5"
           ></v-img>
-          <v-card-title class="grey lighten-4">
+          <v-card-title class="deep-orange lighten-5">
             {{ Posts.title }}
           </v-card-title>
-          <v-card-text class="grey lighten-4">
+          <v-card-text id="pseudo-date" class="deep-orange lighten-5">
             <router-link
               id="pseudo"
               :to="{ name: 'OtherUser', params: { id: Posts.user_id } }"
@@ -74,12 +74,13 @@ export default {
         </v-card>
       </v-col>
     </router-link>
+    <div id="space"></div>
     <v-btn
       class="btn-addpost"
       v-on:click="toggleModale"
       v-if="!visible"
       outlined
-      color="grey lighten-1"
+      color="white"
     >
       <span id="addpost">Add Post</span>
       <svg style="width: 24px; height: 24px" viewBox="0 0 24 24">
@@ -94,12 +95,22 @@ export default {
 </template>
 
 <style scoped>
-body {
-  background-color: red;
-}
 
 a {
-  color: #626262;
+  color:#37474F;
+}
+
+#post {
+  margin-bottom: -42px;
+}
+
+#pseudo-date {
+  color: #37474F;
+}
+
+#pseudo {
+  font-style: italic;
+  margin-right: 5px;
 }
 
 #pseudo:hover {
@@ -111,6 +122,11 @@ a {
   top: 100px;
   right: 30px;
   cursor: pointer;
+  background-color: #E53935;
+}
+
+#space {
+  height: 70px;
 }
 
 @media screen and (max-width: 900px) {
@@ -118,9 +134,7 @@ a {
     display: none;
   }
   .btn-addpost {
-    background-color: #7f7e7e;
-    top: 800px;
-    
+    top: 92%;
   }
 }
 </style>

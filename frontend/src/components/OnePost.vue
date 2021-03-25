@@ -75,7 +75,7 @@ export default {
     tile
   >
     <v-card>
-      <v-card-title class="grey lighten-4"> {{ post[0].title }} </v-card-title>
+      <v-card-title class="deep-orange lighten-5"> {{ post[0].title }} </v-card-title>
       <div
         v-if="post[0].user_id == user_connected_id || admin == 1"
         @click="deletePost(post[0].imgURL)"
@@ -89,7 +89,7 @@ export default {
         </svg>
       </div>
 
-      <v-card-text class="grey lighten-4">
+      <v-card-text class="deep-orange lighten-5">
         <router-link
           id="pseudo"
           :to="{ name: 'OtherUser', params: { id: post[0].user_id } }"
@@ -104,7 +104,7 @@ export default {
         height="425px"
         width="700px"
         contain
-        class="grey lighten-5"
+        class="deep-orange lighten-5"
       ></v-img>
     </v-card>
   </v-col>
