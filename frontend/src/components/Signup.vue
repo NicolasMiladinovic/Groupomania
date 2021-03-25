@@ -8,6 +8,7 @@ export default {
       message: "",
       email: undefined,
       rules: {
+        required: (value) => !!value || "Required.",
         email: (v) => !!(v || "").match(/@/) || "Please enter a valid email",
         password: (v) =>
           !!(v || "").match(
@@ -25,11 +26,11 @@ export default {
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
       if (
-        name.length > 1 &&
-        firstname.length > 1 &&
-        pseudo.length > 1 &&
-        email.length > 1 &&
-        password.length > 3
+        name.length >= 1 &&
+        firstname.length >= 1 &&
+        pseudo.length >= 1 &&
+        email.length >= 1 &&
+        password.length >= 3
       ) {
         axios
           .post(
@@ -82,12 +83,14 @@ export default {
           autofocus="autofocus"
           class="required"
           id="name"
+          :rules="[rules.required, rules.counter]"
           label="Name"
           pattern="[A-Za-zÀ-ÖØ-öø-ÿ' ._-]+$"
           outlined
         ></v-text-field>
         <v-text-field
           id="firstname"
+          :rules="[rules.required, rules.counter]"
           label="Firstname"
           pattern="[A-Za-zÀ-ÖØ-öø-ÿ' ._-]+$"
           outlined
@@ -96,6 +99,7 @@ export default {
       </div>
       <v-text-field
         id="pseudo"
+        :rules="[rules.required, rules.counter]"
         counter="25"
         label="Pseudo"
         pattern="[A-Za-zÀ-ÖØ-öø-ÿ' ._-]+$"

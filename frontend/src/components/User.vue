@@ -79,7 +79,7 @@ export default {
             {{ Posts.title }}
           </v-card-title>
           <v-card-text class="deep-orange lighten-5">
-              {{ Posts.pseudo }}, {{ dateLocale(Posts.date) }}
+             <span id="pseudo">{{ Posts.pseudo }}</span>, {{ dateLocale(Posts.date) }}
           </v-card-text>
         </v-card>
       </v-col>
@@ -101,6 +101,10 @@ a {
 
 #post {
   margin-bottom: -42px;
+}
+
+#pseudo {
+  font-style: italic;
 }
 
 #space {
