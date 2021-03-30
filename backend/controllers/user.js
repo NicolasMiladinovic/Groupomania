@@ -92,20 +92,23 @@ exports.getoneuser = (req, res, next) => {
 };
 
 exports.modifyuser = (req, res, next) => {
-    const pseudo = req.body.pseudo;
-    const name = req.body.name;
-    const firstname = req.body.firstname;
-    const token = req.headers.authorization.split(' ')[1];
-    const decodedToken = jwt.verify(token, process.env.RANDOM_TOKEN_SECRET);
-    const userId = decodedToken.userId;
-    db.query(`UPDATE Users SET pseudo = ?, name = ?, firstname = ? WHERE id = ?`, [pseudo, name, firstname, userId], function (err, result) {
-        if (err) {
-            console.log(err);
-            return res.status(400).json("error");
-        } else {
-            res.status(201).json({ message: "1 user modified" });
-        }
-    });
+    bcrypt.hash(req.body.password, 10)
+        .then(hash => {
+            const pseudo = req.body.pseudo;
+            const name = req.body.name;
+            const firstname = req.body.firstname;
+            const token = req.headers.authorization.split(' ')[1];
+            const decodedToken = jwt.verify(token, process.env.RANDOM_TOKEN_SECRET);
+            const userId = decodedToken.userId;
+            db.query(`UPDATE Users SET pseudo = ?, name = ?, firstname = ?, password = '${hash}' WHERE id = ?`, [pseudo, name, firstname, userId], function (err, result) {
+                if (err) {
+                    console.log(err);
+                    return res.status(400).json("error");
+                } else {
+                    res.status(201).json({ message: "1 user modified" });
+                }
+            });
+        });
 };
 
 exports.getotheruser = (req, res, next) => {

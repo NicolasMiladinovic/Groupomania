@@ -87,7 +87,7 @@ export default {
     <div>{{ comms.length }} Reply<span v-if="comms.length > 1">s</span></div>
     <form @submit.prevent="addComm()" id="replys-form">
       <input id="content" />
-      <button type="submit">Comment</button>
+      <v-btn id="reply-btn" type="submit"><span id="comment"> Comment </span></v-btn>
       <span id="err-comm">{{ message }}</span>
     </form>
     <div id="comms-box" v-for="Comms in comms" :key="Comms.id">
@@ -159,5 +159,13 @@ export default {
 
 #space {
   height: 70px;
+}
+
+#reply-btn {
+  width: 12%;
+}
+
+#comment {
+  font-size: 10px;
 }
 </style>

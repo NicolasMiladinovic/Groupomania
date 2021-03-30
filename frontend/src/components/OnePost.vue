@@ -75,7 +75,9 @@ export default {
     tile
   >
     <v-card>
-      <v-card-title class="deep-orange lighten-5"> {{ post[0].title }} </v-card-title>
+      <v-card-title class="deep-orange lighten-5">
+        {{ post[0].title }}
+      </v-card-title>
       <div
         v-if="post[0].user_id == user_connected_id || admin == 1"
         @click="deletePost(post[0].imgURL)"
@@ -116,5 +118,16 @@ export default {
   top: 10px;
   right: 10px;
   cursor: pointer;
+}
+
+#pseudo {
+  font-style: italic;
+  background: linear-gradient(to top, #c77529 5%, transparent 5.01%) no-repeat
+    left bottom/0 100%;
+  transition: background-size 1000ms;
+}
+
+#pseudo:hover {
+  background-size: 100% 100%;
 }
 </style>

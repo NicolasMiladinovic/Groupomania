@@ -110,11 +110,12 @@ a {
 
 #pseudo {
   font-style: italic;
-  margin-right: 5px;
+  background: linear-gradient(to top, #c77529 5%, transparent 5.01%) no-repeat left bottom/0 100%;
+  transition: background-size 1000ms;
 }
 
 #pseudo:hover {
-  font-size: 110%;
+  background-size: 100% 100%;
 }
 
 .btn-addpost {

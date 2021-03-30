@@ -7,6 +7,10 @@ export default {
     return {
       users: [],
       user_connected_id: localStorage.getItem("user_id"),
+      items: [
+        { delete: "Delete your profile" },
+        { infos: "Modify your profile" },
+      ],
     };
   },
   created() {
@@ -55,9 +59,27 @@ export default {
       <h1>
         @{{ users[0].pseudo }} - {{ users[0].name }} {{ users[0].firstname }}
       </h1>
-      <v-btn depressed color="error" @click="deleteUser()" id="delete">
-        Delete account ⚠️
-      </v-btn>
+      <div class="text-center" id="delete">
+        <v-menu offset-y>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn color="error" dark v-bind="attrs" v-on="on">
+              Dropdown
+            </v-btn>
+          </template>
+          <v-list>
+            <v-list-item v-for="(item, index) in items" :key="index">
+              <v-list-item-title @click="deleteUser()">
+                {{ item.delete }}
+              </v-list-item-title>
+              <v-list-item-title>
+                <router-link to="/modify">
+                  {{ item.infos }}
+                </router-link>
+              </v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </div>
     </div>
 
     <router-link
@@ -65,7 +87,13 @@ export default {
       v-for="Posts in users"
       :key="Posts.id"
     >
-      <v-col v-if="Posts.id != null" cols="12" class="d-flex justify-center mb-6" flat tile>
+      <v-col
+        v-if="Posts.id != null"
+        cols="12"
+        class="d-flex justify-center mb-6"
+        flat
+        tile
+      >
         <v-card id="post">
           <v-img
             :src="Posts.imgURL"
@@ -79,7 +107,8 @@ export default {
             {{ Posts.title }}
           </v-card-title>
           <v-card-text class="deep-orange lighten-5">
-             <span id="pseudo">{{ Posts.pseudo }}</span>, {{ dateLocale(Posts.date) }}
+            <span id="pseudo">{{ Posts.pseudo }}</span
+            >, {{ dateLocale(Posts.date) }}
           </v-card-text>
         </v-card>
       </v-col>
