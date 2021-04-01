@@ -139,4 +139,10 @@ export default {
   display: flex;
   flex-direction: row;
 }
+
+@media screen and (max-width: 700px) {
+  #name-fn {
+    flex-direction: column;
+  }
+}
 </style>

@@ -28,12 +28,12 @@
     </v-btn>
     <router-link to="/signup">
       <v-btn v-if="visible" outlined color="white">
-        <span> Sign Up </span>
+        <span id="signup"> Sign Up </span>
       </v-btn>
     </router-link>
     <router-link to="/login">
       <v-btn v-if="visible" outlined color="white">
-        <span> Log In </span>
+        <span id="login"> Log In </span>
       </v-btn>
     </router-link>
     <router-link to="/user">
@@ -98,5 +98,14 @@ export default {
 #logo-img {
   width: 150px;
   align-items: center;
+}
+
+@media screen and (max-width: 370px) {
+ #signup,
+ #login  {
+    width: 30px;
+    font-size: 10px;
+    margin-left: -15px;
+  }
 }
 </style>

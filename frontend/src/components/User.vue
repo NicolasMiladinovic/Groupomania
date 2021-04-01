@@ -73,8 +73,8 @@ export default {
           </template>
           <v-list id="list">
             <v-list-item v-for="(item, index) in items" :key="index">
-              <v-list-item-title @click="deleteUser()">
-                <span id="delete-profile"> {{ item.delete }} </span>
+              <v-list-item-title>
+                <span id="delete-profile"  @click="deleteUser()"> {{ item.delete }} </span>
                 <router-link to="/modify">
                   {{ item.infos }}
                 </router-link>
