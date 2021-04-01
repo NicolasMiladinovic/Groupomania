@@ -90,7 +90,7 @@ export default {
         ></v-text-field>
         <v-text-field
           id="firstname"
-          :rules="[rules.required, rules.counter]"
+          :rules="[rules.required]"
           label="Firstname"
           pattern="[A-Za-zÀ-ÖØ-öø-ÿ' ._-]+$"
           outlined
@@ -130,7 +130,7 @@ export default {
   </div>
 </template>
 
-<style>
+<style scoped>
 #form-signup {
   margin: 50px 30%;
 }

@@ -58,19 +58,21 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div id="form-signup">
     <v-form action="#" @submit.prevent="modifyUser">
       <div id="name-fn">
         <v-text-field
           autofocus="autofocus"
           class="required"
           id="name"
+          :rules="[rules.required]"
           label="Name"
           pattern="[A-Za-zÀ-ÖØ-öø-ÿ' ._-]+$"
           outlined
         ></v-text-field>
         <v-text-field
           id="firstname"
+          :rules="[rules.required]"
           label="Firstname"
           pattern="[A-Za-zÀ-ÖØ-öø-ÿ' ._-]+$"
           outlined
@@ -79,6 +81,7 @@ export default {
       </div>
       <v-text-field
         id="pseudo"
+        :rules="[rules.required]"
         counter="25"
         label="Pseudo"
         pattern="[A-Za-zÀ-ÖØ-öø-ÿ' ._-]+$"
@@ -88,6 +91,7 @@ export default {
       <v-text-field
         v-model="password"
         id="password"
+        :rules="[rules.password]"
         counter="40"
         label="Password"
         style="min-height: 96px"
@@ -100,5 +104,13 @@ export default {
   </div>
 </template>
 
-<style>
+<style scoped>
+#form-signup {
+  margin: 50px 30%;
+}
+
+#name-fn {
+  display: flex;
+  flex-direction: row;
+}
 </style>
